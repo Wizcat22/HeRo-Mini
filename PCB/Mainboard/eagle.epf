@@ -423,10 +423,6 @@ UsedLibrary="D:/Daten/Documents/Git/WB/Hardware/Module/lib/InputOutputIO (rev18a
 UsedLibrary="D:/Daten/Documents/Git/HeRo-Mini/PCB/lib/HeRo.lbr"
 
 [Win_1]
-Type="Control Panel"
-Number=0
-
-[Win_2]
 Type="Library Editor"
 Number=3
 File="D:/Daten/Documents/Git/HeRo-Mini/PCB/lib/HeRo.lbr"
@@ -469,6 +465,13 @@ ArcDirection=0
 AddLevel=2
 PadsSameType=0
 Layer=94
+
+[Win_2]
+Type="Text Editor"
+Number=1
+File="Mainboard.brd.rpt"
+CursorPos="0 0"
+Font="Courier,11,-1,5,50,0,0,0,0,0"
 
 [Win_3]
 Type="Board Editor"
@@ -515,8 +518,15 @@ PadsSameType=0
 Layer=1
 
 [Win_4]
+Type="Text Editor"
+Number=5
+File="Mainboard.sch.rpt"
+CursorPos="0 0"
+Font="Courier,11,-1,5,50,0,0,0,0,0"
+
+[Win_5]
 Type="Schematic Editor"
-Number=1
+Number=4
 File="Mainboard.sch"
 View="21.7633 14.1953 341.291 219.606"
 WireWidths=" 0.0762 0.1016 0.127 0.15 0.2 0.2032 0.254 0.3048 0.4064 0.508 0.6096 0.8128 1.016 1.27 2.54 0.1524"
@@ -560,9 +570,15 @@ Layer=91
 Views=" 1: 21.7633 14.1953 341.291 219.606 2: 12.7939 -18.9358 472.914 276.856"
 Sheet="1"
 
+[Win_6]
+Type="Control Panel"
+Number=0
+
 [Desktop]
 Screen="3840 1080"
 Window="Win_1"
 Window="Win_2"
 Window="Win_3"
 Window="Win_4"
+Window="Win_5"
+Window="Win_6"
