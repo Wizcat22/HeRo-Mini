@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="9.0.0">
+<eagle version="8.7.0">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
@@ -1250,6 +1250,113 @@ DIN A4, landscape with extra doc field</description>
 <text x="-16.51" y="13.97" size="1.27" layer="25">&gt;NAME</text>
 <text x="8.89" y="13.97" size="1.27" layer="27">&gt;VALUE</text>
 </package>
+<package name="GY-521_MPU6050">
+<wire x1="-10.5" y1="-8" x2="-10.5" y2="8" width="0.127" layer="21"/>
+<wire x1="-10.5" y1="8" x2="10.5" y2="8" width="0.127" layer="21"/>
+<wire x1="10.5" y1="8" x2="10.5" y2="-8" width="0.127" layer="21"/>
+<wire x1="10.5" y1="-8" x2="-10.5" y2="-8" width="0.127" layer="21"/>
+<circle x="-7.65" y="5.715" radius="1.5" width="0.127" layer="21"/>
+<circle x="7.65" y="5.715" radius="1.5" width="0.127" layer="21"/>
+<hole x="-7.65" y="5.715" drill="3"/>
+<hole x="7.65" y="5.715" drill="3"/>
+<pad name="VCC" x="-8.89" y="-6.35" drill="1.016" shape="long" rot="R90"/>
+<pad name="GND" x="-6.35" y="-6.35" drill="1.016" shape="long" rot="R90"/>
+<pad name="SCL" x="-3.81" y="-6.35" drill="1.016" shape="long" rot="R90"/>
+<pad name="SDA" x="-1.27" y="-6.35" drill="1.016" shape="long" rot="R90"/>
+<pad name="XDA" x="1.27" y="-6.35" drill="1.016" shape="long" rot="R90"/>
+<pad name="XCL" x="3.81" y="-6.35" drill="1.016" shape="long" rot="R90"/>
+<pad name="AD0" x="6.35" y="-6.35" drill="1.016" shape="long" rot="R90"/>
+<pad name="INT" x="8.89" y="-6.35" drill="1.016" shape="long" rot="R90"/>
+<wire x1="0" y1="0" x2="-7.62" y2="0" width="0.127" layer="21"/>
+<wire x1="-7.62" y1="0" x2="-6.35" y2="1.27" width="0.127" layer="21"/>
+<wire x1="-7.62" y1="0" x2="-6.35" y2="-1.27" width="0.127" layer="21"/>
+<wire x1="0" y1="0" x2="0" y2="7.62" width="0.127" layer="21"/>
+<wire x1="0" y1="7.62" x2="-1.27" y2="6.35" width="0.127" layer="21"/>
+<wire x1="0" y1="7.62" x2="1.27" y2="6.35" width="0.127" layer="21"/>
+<wire x1="-3.81" y1="2.54" x2="-3.81" y2="-2.54" width="0.127" layer="21" curve="-180"/>
+<wire x1="2.54" y1="3.81" x2="-2.54" y2="3.81" width="0.127" layer="21" curve="-180"/>
+<wire x1="2.54" y1="3.81" x2="1.905" y2="3.175" width="0.127" layer="21"/>
+<wire x1="2.54" y1="3.81" x2="3.175" y2="3.175" width="0.127" layer="21"/>
+<wire x1="-3.81" y1="2.54" x2="-3.175" y2="3.175" width="0.127" layer="21"/>
+<wire x1="-3.81" y1="2.54" x2="-3.175" y2="1.905" width="0.127" layer="21"/>
+<text x="0.635" y="4.445" size="1.27" layer="21">X+</text>
+<text x="-4.445" y="0.635" size="1.27" layer="21" rot="R90">Y+</text>
+<text x="-8.255" y="-4.445" size="0.8128" layer="21" rot="R90">VCC</text>
+<text x="-5.715" y="-4.445" size="0.8128" layer="21" rot="R90">GND</text>
+<text x="-3.175" y="-4.445" size="0.8128" layer="21" rot="R90">SCL</text>
+<text x="-0.635" y="-4.445" size="0.8128" layer="21" rot="R90">SDA</text>
+<text x="1.905" y="-4.445" size="0.8128" layer="21" rot="R90">XDA</text>
+<text x="4.445" y="-4.445" size="0.8128" layer="21" rot="R90">XCL</text>
+<text x="6.985" y="-4.445" size="0.8128" layer="21" rot="R90">AD0</text>
+<text x="9.525" y="-4.445" size="0.8128" layer="21" rot="R90">INT</text>
+<text x="-10.16" y="8.89" size="1.27" layer="25">&gt;NAME</text>
+<text x="3.81" y="8.89" size="1.27" layer="27">&gt;VALUE</text>
+</package>
+<package name="VL53L0X_H">
+<pad name="GPIO" x="0" y="-6.35" drill="1.016" shape="long" rot="R90"/>
+<pad name="GND" x="-2.54" y="-6.35" drill="1.016" shape="long" rot="R90"/>
+<pad name="2V8" x="-5.08" y="-6.35" drill="1.016" shape="long" rot="R90"/>
+<pad name="VIN" x="-7.62" y="-6.35" drill="1.016" shape="long" rot="R90"/>
+<pad name="SHDN" x="2.54" y="-6.35" drill="1.016" shape="long" rot="R90"/>
+<pad name="SCL" x="5.08" y="-6.35" drill="1.016" shape="long" rot="R90"/>
+<pad name="SDA" x="7.62" y="-6.35" drill="1.016" shape="long" rot="R90"/>
+<wire x1="-10.16" y1="-8.89" x2="-10.16" y2="8.89" width="0.127" layer="21"/>
+<wire x1="-10.16" y1="8.89" x2="10.16" y2="8.89" width="0.127" layer="21"/>
+<wire x1="10.16" y1="8.89" x2="10.16" y2="-8.89" width="0.127" layer="21"/>
+<wire x1="10.16" y1="-8.89" x2="-10.16" y2="-8.89" width="0.127" layer="21"/>
+<hole x="-7.62" y="6.35" drill="2.54"/>
+<hole x="7.62" y="6.35" drill="2.54"/>
+<text x="-8.89" y="2.54" size="1.27" layer="25">&gt;NAME</text>
+<text x="-8.89" y="0" size="1.27" layer="27">&gt;VALUE</text>
+<text x="-6.985" y="-4.445" size="1.27" layer="27" rot="R90">VIN</text>
+<text x="-4.445" y="-4.445" size="1.27" layer="27" rot="R90">2V8</text>
+<text x="-1.905" y="-4.445" size="1.27" layer="27" rot="R90">GND</text>
+<text x="0.635" y="-4.445" size="1.27" layer="27" rot="R90">GPIO</text>
+<text x="3.175" y="-4.445" size="1.27" layer="27" rot="R90">SHDN</text>
+<text x="5.715" y="-4.445" size="1.27" layer="27" rot="R90">SCL</text>
+<text x="8.255" y="-4.445" size="1.27" layer="27" rot="R90">SDA</text>
+</package>
+<package name="VL53L0X_V">
+<pad name="GPIO" x="0" y="-6.35" drill="1.016" shape="long" rot="R90"/>
+<pad name="GND" x="-2.54" y="-6.35" drill="1.016" shape="long" rot="R90"/>
+<pad name="2V8" x="-5.08" y="-6.35" drill="1.016" shape="long" rot="R90"/>
+<pad name="VIN" x="-7.62" y="-6.35" drill="1.016" shape="long" rot="R90"/>
+<pad name="SHDN" x="2.54" y="-6.35" drill="1.016" shape="long" rot="R90"/>
+<pad name="SCL" x="5.08" y="-6.35" drill="1.016" shape="long" rot="R90"/>
+<pad name="SDA" x="7.62" y="-6.35" drill="1.016" shape="long" rot="R90"/>
+<wire x1="-10.16" y1="-8.89" x2="-10.16" y2="-3.81" width="0.127" layer="21"/>
+<wire x1="-10.16" y1="-3.81" x2="10.16" y2="-3.81" width="0.127" layer="21"/>
+<wire x1="10.16" y1="-3.81" x2="10.16" y2="-8.89" width="0.127" layer="21"/>
+<wire x1="10.16" y1="-8.89" x2="-10.16" y2="-8.89" width="0.127" layer="21"/>
+<text x="-10.16" y="-10.16" size="1.27" layer="25">&gt;NAME</text>
+<text x="2.54" y="-10.16" size="1.27" layer="27">&gt;VALUE</text>
+<text x="-6.985" y="-3.175" size="1.27" layer="27" rot="R90">VIN</text>
+<text x="-4.445" y="-3.175" size="1.27" layer="27" rot="R90">2V8</text>
+<text x="-1.905" y="-3.175" size="1.27" layer="27" rot="R90">GND</text>
+<text x="0.635" y="-3.175" size="1.27" layer="27" rot="R90">GPIO</text>
+<text x="3.175" y="-3.175" size="1.27" layer="27" rot="R90">SHDN</text>
+<text x="5.715" y="-3.175" size="1.27" layer="27" rot="R90">SCL</text>
+<text x="8.255" y="-3.175" size="1.27" layer="27" rot="R90">SDA</text>
+</package>
+<package name="D24V10F5">
+<pad name="PG" x="5.08" y="-7.62" drill="1.016" shape="long" rot="R90"/>
+<pad name="!SHDN" x="2.54" y="-7.62" drill="1.016" shape="long" rot="R90"/>
+<pad name="VIN" x="0" y="-7.62" drill="1.016" shape="long" rot="R90"/>
+<pad name="GND" x="-2.54" y="-7.62" drill="1.016" shape="long" rot="R90"/>
+<pad name="VOUT" x="-5.08" y="-7.62" drill="1.016" shape="long" rot="R90"/>
+<wire x1="-6.5" y1="-9" x2="-6.5" y2="9" width="0.127" layer="21"/>
+<wire x1="-6.5" y1="9" x2="6.5" y2="9" width="0.127" layer="21"/>
+<wire x1="6.5" y1="9" x2="6.5" y2="-9" width="0.127" layer="21"/>
+<wire x1="6.5" y1="-9" x2="-6.5" y2="-9" width="0.127" layer="21"/>
+<text x="-5.08" y="2.54" size="2.54" layer="21">5V 1A</text>
+<text x="-4.445" y="-5.715" size="1.27" layer="21" rot="R90">VOUT</text>
+<text x="-1.905" y="-5.715" size="1.27" layer="21" rot="R90">GND</text>
+<text x="0.635" y="-5.715" size="1.27" layer="21" rot="R90">VIN</text>
+<text x="3.175" y="-5.715" size="1.27" layer="21" rot="R90">!SHDN</text>
+<text x="5.715" y="-5.715" size="1.27" layer="21" rot="R90">PG</text>
+<text x="-7.62" y="-7.62" size="1.27" layer="25" rot="R90">&gt;NAME</text>
+<text x="8.89" y="-7.62" size="1.27" layer="27" rot="R90">&gt;VALUE</text>
+</package>
 </packages>
 <symbols>
 <symbol name="ESP32-DOITV1">
@@ -1309,6 +1416,50 @@ DIN A4, landscape with extra doc field</description>
 <wire x1="10.16" y1="-7.62" x2="-7.62" y2="-7.62" width="0.254" layer="94"/>
 <text x="-7.62" y="5.588" size="1.778" layer="95">&gt;NAME</text>
 <text x="-7.62" y="-10.16" size="1.778" layer="95">&gt;VALUE</text>
+</symbol>
+<symbol name="GY-521_MPU-6050">
+<wire x1="-7.62" y1="-7.62" x2="-7.62" y2="5.08" width="0.254" layer="94"/>
+<wire x1="-7.62" y1="5.08" x2="7.62" y2="5.08" width="0.254" layer="94"/>
+<wire x1="7.62" y1="5.08" x2="7.62" y2="-7.62" width="0.254" layer="94"/>
+<wire x1="7.62" y1="-7.62" x2="-7.62" y2="-7.62" width="0.254" layer="94"/>
+<pin name="INT" x="10.16" y="-5.08" length="short" rot="R180"/>
+<pin name="AD0" x="10.16" y="-2.54" length="short" rot="R180"/>
+<pin name="XCL" x="10.16" y="0" length="short" rot="R180"/>
+<pin name="XDA" x="10.16" y="2.54" length="short" rot="R180"/>
+<pin name="SDA" x="-10.16" y="-5.08" length="short"/>
+<pin name="SCL" x="-10.16" y="-2.54" length="short"/>
+<pin name="GND" x="-10.16" y="0" length="short"/>
+<pin name="VCC" x="-10.16" y="2.54" length="short"/>
+<text x="-7.62" y="6.35" size="1.778" layer="95">&gt;NAME</text>
+<text x="-7.62" y="-10.16" size="1.778" layer="96">&gt;VALUE</text>
+</symbol>
+<symbol name="VL53L0X">
+<pin name="SDA" x="-7.62" y="-7.62" length="short"/>
+<pin name="SCL" x="-7.62" y="-5.08" length="short"/>
+<pin name="SHDN" x="-7.62" y="-2.54" length="short"/>
+<pin name="GPIO" x="-7.62" y="0" length="short"/>
+<pin name="GND" x="-7.62" y="2.54" length="short"/>
+<pin name="2V8" x="-7.62" y="5.08" length="short"/>
+<pin name="VIN" x="-7.62" y="7.62" length="short"/>
+<wire x1="-5.08" y1="-10.16" x2="-5.08" y2="10.16" width="0.254" layer="94"/>
+<wire x1="-5.08" y1="10.16" x2="5.08" y2="10.16" width="0.254" layer="94"/>
+<wire x1="5.08" y1="10.16" x2="5.08" y2="-10.16" width="0.254" layer="94"/>
+<wire x1="5.08" y1="-10.16" x2="-5.08" y2="-10.16" width="0.254" layer="94"/>
+<text x="-5.08" y="11.43" size="1.778" layer="95">&gt;NAME</text>
+<text x="-5.08" y="-12.7" size="1.778" layer="96">&gt;VALUE</text>
+</symbol>
+<symbol name="D24V10F5">
+<pin name="PG" x="-7.62" y="5.08" length="short"/>
+<pin name="!SHDN" x="-7.62" y="2.54" length="short"/>
+<pin name="VIN" x="-7.62" y="0" length="short"/>
+<pin name="GND" x="-7.62" y="-2.54" length="short"/>
+<pin name="VOUT" x="-7.62" y="-5.08" length="short"/>
+<wire x1="-5.08" y1="-7.62" x2="-5.08" y2="7.62" width="0.254" layer="94"/>
+<wire x1="-5.08" y1="7.62" x2="5.08" y2="7.62" width="0.254" layer="94"/>
+<wire x1="5.08" y1="7.62" x2="5.08" y2="-7.62" width="0.254" layer="94"/>
+<wire x1="5.08" y1="-7.62" x2="-5.08" y2="-7.62" width="0.254" layer="94"/>
+<text x="-5.08" y="8.89" size="1.778" layer="95">&gt;NAME</text>
+<text x="-5.08" y="-10.16" size="1.778" layer="96">&gt;VALUE</text>
 </symbol>
 </symbols>
 <devicesets>
@@ -1375,6 +1526,82 @@ DIN A4, landscape with extra doc field</description>
 <connect gate="G$1" pin="PG" pad="P$5"/>
 <connect gate="G$1" pin="VIN" pad="P$1 P$2 P$17"/>
 <connect gate="G$1" pin="VOUT" pad="P$12 P$13 P$15"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="GY-521_MPU6050">
+<gates>
+<gate name="G$1" symbol="GY-521_MPU-6050" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="GY-521_MPU6050">
+<connects>
+<connect gate="G$1" pin="AD0" pad="AD0"/>
+<connect gate="G$1" pin="GND" pad="GND"/>
+<connect gate="G$1" pin="INT" pad="INT"/>
+<connect gate="G$1" pin="SCL" pad="SCL"/>
+<connect gate="G$1" pin="SDA" pad="SDA"/>
+<connect gate="G$1" pin="VCC" pad="VCC"/>
+<connect gate="G$1" pin="XCL" pad="XCL"/>
+<connect gate="G$1" pin="XDA" pad="XDA"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="VL53L0X">
+<gates>
+<gate name="G$1" symbol="VL53L0X" x="0" y="0"/>
+</gates>
+<devices>
+<device name="H" package="VL53L0X_H">
+<connects>
+<connect gate="G$1" pin="2V8" pad="2V8"/>
+<connect gate="G$1" pin="GND" pad="GND"/>
+<connect gate="G$1" pin="GPIO" pad="GPIO"/>
+<connect gate="G$1" pin="SCL" pad="SCL"/>
+<connect gate="G$1" pin="SDA" pad="SDA"/>
+<connect gate="G$1" pin="SHDN" pad="SHDN"/>
+<connect gate="G$1" pin="VIN" pad="VIN"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="V" package="VL53L0X_V">
+<connects>
+<connect gate="G$1" pin="2V8" pad="2V8"/>
+<connect gate="G$1" pin="GND" pad="GND"/>
+<connect gate="G$1" pin="GPIO" pad="GPIO"/>
+<connect gate="G$1" pin="SCL" pad="SCL"/>
+<connect gate="G$1" pin="SDA" pad="SDA"/>
+<connect gate="G$1" pin="SHDN" pad="SHDN"/>
+<connect gate="G$1" pin="VIN" pad="VIN"/>
+</connects>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+</devices>
+</deviceset>
+<deviceset name="D24V10F5">
+<gates>
+<gate name="G$1" symbol="D24V10F5" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="D24V10F5">
+<connects>
+<connect gate="G$1" pin="!SHDN" pad="!SHDN"/>
+<connect gate="G$1" pin="GND" pad="GND"/>
+<connect gate="G$1" pin="PG" pad="PG"/>
+<connect gate="G$1" pin="VIN" pad="VIN"/>
+<connect gate="G$1" pin="VOUT" pad="VOUT"/>
 </connects>
 <technologies>
 <technology name=""/>
@@ -5910,6 +6137,9 @@ Source: http://www.mouser.com/ds/2/392/products_18-2245.pdf</description>
 <attribute name="SPICEPREFIX" value="G"/>
 </part>
 <part name="U$2" library="HeRo" deviceset="D24V150F6" device=""/>
+<part name="U$3" library="HeRo" deviceset="GY-521_MPU6050" device=""/>
+<part name="U$4" library="HeRo" deviceset="VL53L0X" device="V"/>
+<part name="U$5" library="HeRo" deviceset="D24V10F5" device=""/>
 </parts>
 <sheets>
 <sheet>
@@ -5954,6 +6184,9 @@ Source: http://www.mouser.com/ds/2/392/products_18-2245.pdf</description>
 <instance part="VDD5" gate="G$1" x="45.72" y="116.84"/>
 <instance part="VDD6" gate="G$1" x="83.82" y="116.84"/>
 <instance part="U$2" gate="G$1" x="50.8" y="48.26"/>
+<instance part="U$3" gate="G$1" x="101.6" y="50.8"/>
+<instance part="U$4" gate="G$1" x="144.78" y="48.26"/>
+<instance part="U$5" gate="G$1" x="167.64" y="53.34"/>
 </instances>
 <busses>
 </busses>
