@@ -30,6 +30,16 @@
 #define LOW 0
 #define LEDA PIN4_bp
 #define LEDB PIN3_bp
+#define SENSE PIN3_bm
+#define PWMA 0
+#define PWMB 1
+#define PWMC 2
+#define PERIOD_PWM 50000
+#define ADDA PIN7_bp
+#define ADDB PIN6_bp
+#define ADDC PIN5_bp
+#define I2C_ACK TWI_SCMD_RESPONSE_gc
+#define I2C_TCOMP TWI_SCMD_COMPTRANS_gc
 
 #include <avr/io.h>
 #include <util/delay.h>
@@ -40,7 +50,11 @@ void init_led(void);
 void init_pwm(void);
 void init_i2c(void);
 void init_sense(void);
-void change_led(uint8_t led, uint8_t state);
-
+void led_write(uint8_t led, uint8_t state);
+uint8_t sense_read(void);
+void pwm_write(uint8_t channel,uint16_t value);
+uint8_t i2c_read_byte(void);
+void i2c_write_byte(uint8_t data);
+void i2c_write_response(uint8_t response);
 
 #endif /* HAL_H_ */

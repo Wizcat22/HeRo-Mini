@@ -31,53 +31,117 @@
 void init_hw(void){
 
 	CPU_CCP = CCP_IOREG_gc; //Enable change of SYS-CLK Registers for 4 Clock cycles
-	CLKCTRL_MCLKCTRLB = (0<<1); //Disable Sys-CLK Prescaler for 20Mhz operation
+	CLKCTRL_MCLKCTRLB = (0<<1); //Disable Sys-CLK Prescaler for full 20Mhz operation
 
-	init_led();
-	init_pwm();
-	init_i2c();
-	init_sense();
+	init_led(); //Initialize duo led
+	init_sense(); //Initialize sense input
+	init_pwm(); //Initialize servo pwm
+	init_i2c(); //Initialize i2c in slave mode
+
 }
 
 void init_led(void){
 	PORTA.DIRSET = (1<<LEDA)|(1<<LEDB); //Set LEDA & LEDB as output
 
-	change_led(LEDA,HIGH);
+	led_write(LEDA,HIGH);
 	_delay_ms(500);
-	change_led(LEDB,HIGH);
+	led_write(LEDB,HIGH);
 	_delay_ms(500);
-	change_led(LEDA,LOW);
+	led_write(LEDA,LOW);
 	_delay_ms(500);
-	change_led(LEDB,LOW);
+	led_write(LEDB,LOW);
 	_delay_ms(500);
 
 }
 
 
 void init_pwm(void){
-	
+	PORTB.DIRSET = 7; //Set LEDA & LEDB as output
+	TCA0_SINGLE_CTRLA = TCA_SINGLE_CLKSEL_DIV8_gc | (1<<TCA_SINGLE_ENABLE_bp); //Set timer prescaler to 8x
+	//TCA0_SINGLE_CTRLB = (1<<TCA_SINGLE_CMP0_bp)|(1<<TCA_SINGLE_CMP1_bp)|(1<<TCA_SINGLE_CMP2_bp)|(1<<TCA_SINGLE_ALUPD_bp)|(1<<TCA_SINGLE_WGMODE_SINGLESLOPE_gc); //Enable pwm outputs 0, 1 and 2. Set timermode to single-slope pwm
+	TCA0_SINGLE_CTRLB = 115; //Enable pwm outputs 0, 1 and 2. Set timermode to single-slope pwm
+	TCA0_SINGLE_PERBUF = 50000; //Set timer period to 50000 (0.02s with 20Mhz/8)
+	TCA0_SINGLE_CMP0BUF = 0; //Set compare value of output 0 to 0.
+	TCA0_SINGLE_CMP1BUF = 0; //Set compare value of output 1 to 0.
+	TCA0_SINGLE_CMP2BUF = 0; //Set compare value of output 2 to 0.
+	//TCA0_SINGLE_CTRLA |= (1<<TCA_SINGLE_ENABLE_bp); //Enable timer
+
 }
 
 
 void init_i2c(void){
-	
+	PORTA.DIRCLR = (1<<ADDA)|(1<<ADDB)|(1<<ADDC); //Set address pins as input
+	PORTA_PIN5CTRL = (1<<PORT_PULLUPEN_bp); //Enable pullup on address pin
+	PORTA_PIN6CTRL = (1<<PORT_PULLUPEN_bp); //Enable pullup on address pin
+	PORTA_PIN7CTRL = (1<<PORT_PULLUPEN_bp); //Enable pullup on address pin
+
+	_delay_ms(50);
+
+	PORTMUX.CTRLB = (1<<PORTMUX_TWI0_bp); //Use alternate pins for i2c
+	TWI0_SADDR = ((1<<3)|(PORTA.IN & ((1<<ADDA)|(1<<ADDB)|(1<<ADDC))>>5))<<1; //Set i2c slave address (0x08 - 0x0F)
+	TWI0_SCTRLA = (1<<TWI_ENABLE_bp); //Enable twi in slave mode
+
 }
 
 
 void init_sense(void){
+
+	PORTB.DIRCLR = (1<<SENSE);
 	
 }
 
-void change_led(uint8_t led, uint8_t state){
+void led_write(uint8_t led, uint8_t state){
 
 	assert(led == LEDA || led == LEDB);
 
 	if (state >= HIGH)
 	{
 		PORTA.OUTSET = (1<<led);
-	} 
+	}
 	else
 	{
 		PORTA.OUTCLR = (1<<led);
 	}
+}
+
+uint8_t sense_read(void){
+	if (PORTB.IN & SENSE){
+		return HIGH;
+	}
+	else{
+		return LOW;
+	}
+}
+
+void pwm_write(uint8_t channel,uint16_t value){
+	assert(value<=PERIOD_PWM);
+
+	switch(channel){
+		case 0: TCA0_SINGLE_CMP0BUF = value;
+		break;
+		case 1: TCA0_SINGLE_CMP1BUF = value;
+		break;
+		case 2: TCA0_SINGLE_CMP2BUF = value;
+		break;
+		default:
+		break;
+	}
+}
+
+uint8_t i2c_read_byte(void){
+	while (((TWI0_SSTATUS & (1<<TWI_CLKHOLD_bp))==0)){}
+	return TWI0_SDATA;
+}
+
+void i2c_write_byte(uint8_t data){
+	while (((TWI0_SSTATUS & (1<<TWI_CLKHOLD_bp))==0)){}
+	TWI0.SSTATUS |= (TWI_DIF_bm | TWI_APIF_bm);
+	TWI0.SDATA = data;
+	while (((TWI0_SSTATUS & (1<<TWI_DIF_bp))==0)){}
+}
+
+void i2c_write_response(uint8_t response){
+	assert((response == TWI_SCMD_RESPONSE_gc) | (response == TWI_SCMD_COMPTRANS_gc));
+
+	TWI0_SCTRLB = response;
 }
