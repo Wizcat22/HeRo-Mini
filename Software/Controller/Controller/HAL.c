@@ -60,7 +60,7 @@ void init_pwm(void){
 	TCA0_SINGLE_CTRLA = TCA_SINGLE_CLKSEL_DIV8_gc | (1<<TCA_SINGLE_ENABLE_bp); //Set timer prescaler to 8x
 	//TCA0_SINGLE_CTRLB = (1<<TCA_SINGLE_CMP0_bp)|(1<<TCA_SINGLE_CMP1_bp)|(1<<TCA_SINGLE_CMP2_bp)|(1<<TCA_SINGLE_ALUPD_bp)|(1<<TCA_SINGLE_WGMODE_SINGLESLOPE_gc); //Enable pwm outputs 0, 1 and 2. Set timermode to single-slope pwm
 	TCA0_SINGLE_CTRLB = 115; //Enable pwm outputs 0, 1 and 2. Set timermode to single-slope pwm
-	TCA0_SINGLE_PERBUF = 50000; //Set timer period to 50000 (0.02s with 20Mhz/8)
+	TCA0_SINGLE_PERBUF = PERIOD_TIMER; //Set timer period to 50000 (0.02s with 20Mhz/8)
 	TCA0_SINGLE_CMP0BUF = 0; //Set compare value of output 0 to 0.
 	TCA0_SINGLE_CMP1BUF = 0; //Set compare value of output 1 to 0.
 	TCA0_SINGLE_CMP2BUF = 0; //Set compare value of output 2 to 0.
@@ -86,7 +86,7 @@ void init_i2c(void){
 
 void init_sense(void){
 
-	PORTB.DIRCLR = (1<<SENSE);
+	PORTB.DIRCLR = (uint8_t)(1<<SENSE);
 	
 }
 
@@ -114,7 +114,7 @@ uint8_t sense_read(void){
 }
 
 void pwm_write(uint8_t channel,uint16_t value){
-	assert(value<=PERIOD_PWM);
+	assert(value<=PERIOD_TIMER);
 
 	switch(channel){
 		case 0: TCA0_SINGLE_CMP0BUF = value;
@@ -126,6 +126,15 @@ void pwm_write(uint8_t channel,uint16_t value){
 		default:
 		break;
 	}
+}
+
+void servo_write_us(uint8_t servo,uint16_t servo_time_us){
+	assert(servo_time_us<=SERVO_MAX_TIME && servo_time_us >= SERVO_MIN_TIME);
+	pwm_write(servo,(uint16_t)(servo_time_us/0.4)); //0.4 = PRESCALER * 1000000/F_CPU = 8*1000000/20000000 = time per timerclock in us
+}
+
+void servo_write_deg(uint8_t channel,uint16_t deg){
+	
 }
 
 uint8_t i2c_read_byte(void){

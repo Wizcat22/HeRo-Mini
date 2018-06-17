@@ -21,6 +21,12 @@
 //13-PA3-LEDB
 //14-GND
 
+//SERVO DATA
+//max. range >90° && <180°  
+//max. pulse length 2260us
+//min. pulse length 700us
+//max. frequency 440Hz
+//min. frequency 40Hz
 
 #ifndef HAL_H_
 #define HAL_H_
@@ -34,12 +40,18 @@
 #define PWMA 0
 #define PWMB 1
 #define PWMC 2
-#define PERIOD_PWM 50000
+#define SERVOA PWMA
+#define SERVOB PWMB
+#define SERVOC PWMC
 #define ADDA PIN7_bp
 #define ADDB PIN6_bp
 #define ADDC PIN5_bp
 #define I2C_ACK TWI_SCMD_RESPONSE_gc
 #define I2C_TCOMP TWI_SCMD_COMPTRANS_gc
+#define F_SERVO 50
+#define SERVO_MAX_TIME 2260
+#define SERVO_MIN_TIME 700
+#define PERIOD_TIMER ((F_CPU) / ((uint16_t)(F_SERVO)*8))
 
 #include <avr/io.h>
 #include <util/delay.h>
@@ -56,5 +68,6 @@ void pwm_write(uint8_t channel,uint16_t value);
 uint8_t i2c_read_byte(void);
 void i2c_write_byte(uint8_t data);
 void i2c_write_response(uint8_t response);
-
+void servo_write_us(uint8_t channel,uint16_t servo_time_us);
+void servo_write_deg(uint8_t channel,uint16_t deg);
 #endif /* HAL_H_ */
