@@ -52,6 +52,7 @@
 #define SERVO_MAX_TIME 2260
 #define SERVO_MIN_TIME 700
 #define PERIOD_TIMER ((F_CPU) / ((uint16_t)(F_SERVO)*8))
+#define SERVO_RANGE 180 
 
 #include <avr/io.h>
 #include <util/delay.h>
@@ -69,5 +70,5 @@ uint8_t i2c_read_byte(void);
 void i2c_write_byte(uint8_t data);
 void i2c_write_response(uint8_t response);
 void servo_write_us(uint8_t channel,uint16_t servo_time_us);
-void servo_write_deg(uint8_t channel,uint16_t deg);
+void servo_write_deg(uint8_t channel,int8_t deg);
 #endif /* HAL_H_ */

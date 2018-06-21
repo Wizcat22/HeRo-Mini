@@ -20,17 +20,20 @@ int main(void)
 		{
 		led_write(LEDA,HIGH);
 		led_write(LEDB,LOW);
-				servo_write_us(SERVOA,(uint16_t)SERVO_MAX_TIME);
-				servo_write_us(SERVOB,(uint16_t)SERVO_MAX_TIME);
-				servo_write_us(SERVOC,(uint16_t)SERVO_MAX_TIME);
+			for (int8_t i=-(SERVO_RANGE/2);i<(SERVO_RANGE/2);i++)
+			{
+				servo_write_deg(SERVOA,i);
+				servo_write_deg(SERVOB,i);
+				servo_write_deg(SERVOC,i);
+			}
 		} 
 		else
 		{
 		led_write(LEDB,HIGH);
 		led_write(LEDA,LOW);
-				servo_write_us(SERVOA,(uint16_t)SERVO_MIN_TIME);
-				servo_write_us(SERVOB,(uint16_t)SERVO_MIN_TIME);
-				servo_write_us(SERVOC,(uint16_t)SERVO_MIN_TIME);
+		servo_write_deg(SERVOA,0);
+		servo_write_deg(SERVOB,0);
+		servo_write_deg(SERVOC,0);
 		}
 
 
