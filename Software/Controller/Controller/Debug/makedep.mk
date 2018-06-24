@@ -2,7 +2,15 @@
 # Automatically-generated file. Do not edit or delete the file
 ################################################################################
 
-HAL.c
+HAL.cpp
 
-main.c
+Led.cpp
+
+Leg.cpp
+
+main.cpp
+
+Sensor.cpp
+
+Servo.cpp
 

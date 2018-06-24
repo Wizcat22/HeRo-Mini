@@ -128,14 +128,7 @@ void pwm_write(uint8_t channel,uint16_t value){
 	}
 }
 
-void servo_write_us(uint8_t servo,uint16_t servo_time_us){
-	assert(servo_time_us<=SERVO_MAX_TIME && servo_time_us >= SERVO_MIN_TIME);
-	pwm_write(servo,(uint16_t)(servo_time_us/0.4)); //0.4 = PRESCALER * 1000000/F_CPU = 8*1000000/20000000 = time per timerclock in us
-}
 
-void servo_write_deg(uint8_t channel,int8_t deg){
-	servo_write_us(channel,((SERVO_MAX_TIME-SERVO_MIN_TIME)/SERVO_RANGE) * deg + ((SERVO_MAX_TIME+SERVO_MIN_TIME)/2));
-}
 
 uint8_t i2c_read_byte(void){
 	while (((TWI0_SSTATUS & (1<<TWI_CLKHOLD_bp))==0)){}
