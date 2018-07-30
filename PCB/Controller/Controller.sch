@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="8.7.0">
+<eagle version="9.1.1">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
@@ -129,9 +129,9 @@ DIN A4, landscape with extra doc field</description>
 </deviceset>
 </devicesets>
 </library>
-<library name="HeRo">
+<library name="HeRo" urn="urn:adsk.eagle:library:4344731">
 <packages>
-<package name="SOIC14">
+<package name="SOIC14" urn="urn:adsk.eagle:footprint:4344739/1" library_version="1" library_locally_modified="yes">
 <smd name="11" x="0" y="2.875" dx="0.6" dy="1.5" layer="1"/>
 <smd name="10" x="1.27" y="2.875" dx="0.6" dy="1.5" layer="1"/>
 <smd name="9" x="2.54" y="2.875" dx="0.6" dy="1.5" layer="1"/>
@@ -150,6 +150,7 @@ DIN A4, landscape with extra doc field</description>
 <wire x1="4.375" y1="2" x2="4.375" y2="-2" width="0.127" layer="21"/>
 <wire x1="4.375" y1="-2" x2="-4.375" y2="-2" width="0.127" layer="21"/>
 <wire x1="-4.375" y1="-2" x2="-4.375" y2="2" width="0.127" layer="21"/>
+<wire x1="-4.318" y1="-1.651" x2="4.318" y2="-1.651" width="0.127" layer="21"/>
 <rectangle x1="-0.255" y1="2" x2="0.255" y2="3.1" layer="21"/>
 <rectangle x1="1.015" y1="2" x2="1.525" y2="3.1" layer="21"/>
 <rectangle x1="2.285" y1="2" x2="2.795" y2="3.1" layer="21"/>
@@ -164,7 +165,6 @@ DIN A4, landscape with extra doc field</description>
 <rectangle x1="1.015" y1="-3.1" x2="1.525" y2="-2" layer="21"/>
 <rectangle x1="2.285" y1="-3.1" x2="2.795" y2="-2" layer="21"/>
 <rectangle x1="3.555" y1="-3.1" x2="4.065" y2="-2" layer="21"/>
-<wire x1="-4.318" y1="-1.651" x2="4.318" y2="-1.651" width="0.127" layer="21"/>
 <circle x="-3.81" y="-1.27" radius="0.179603125" width="0.127" layer="21"/>
 <text x="-3.556" y="-0.889" size="0.6096" layer="21" rot="R90">1</text>
 <text x="-2.54" y="0" size="1.27" layer="21">&gt;NAME</text>
@@ -176,7 +176,7 @@ DIN A4, landscape with extra doc field</description>
 <vertex x="-4.445" y="2.032"/>
 </polygon>
 </package>
-<package name="SL12SMD058">
+<package name="SL12SMD058" urn="urn:adsk.eagle:footprint:4344737/1" library_version="1" library_locally_modified="yes">
 <smd name="3" x="-5.08" y="-2.54" dx="1" dy="3.5" layer="1" rot="R270"/>
 <smd name="2" x="-5.08" y="0" dx="1" dy="3.5" layer="1" rot="R270"/>
 <smd name="1" x="-5.08" y="2.54" dx="1" dy="3.5" layer="1" rot="R270"/>
@@ -196,10 +196,17 @@ DIN A4, landscape with extra doc field</description>
 <text x="13.97" y="-3.81" size="1.27" layer="25" rot="R90">&gt;NAME</text>
 <text x="16.51" y="-3.81" size="1.27" layer="27" rot="R90">&gt;VALUE</text>
 </package>
-<package name="PINHD10SMD">
+<package name="PINHD10SMD" urn="urn:adsk.eagle:footprint:4344736/1" library_version="1" library_locally_modified="yes">
 <smd name="3" x="-5.08" y="6.35" dx="1" dy="3.5" layer="1" rot="R270"/>
 <smd name="2" x="-5.08" y="8.89" dx="1" dy="3.5" layer="1" rot="R270"/>
 <smd name="1" x="-5.08" y="11.43" dx="1" dy="3.5" layer="1" rot="R270"/>
+<smd name="4" x="-5.08" y="3.81" dx="1" dy="3.5" layer="1" rot="R270"/>
+<smd name="5" x="-5.08" y="1.27" dx="1" dy="3.5" layer="1" rot="R270"/>
+<smd name="6" x="-5.08" y="-1.27" dx="1" dy="3.5" layer="1" rot="R270"/>
+<smd name="7" x="-5.08" y="-3.81" dx="1" dy="3.5" layer="1" rot="R270"/>
+<smd name="8" x="-5.08" y="-6.35" dx="1" dy="3.5" layer="1" rot="R270"/>
+<smd name="9" x="-5.08" y="-8.89" dx="1" dy="3.5" layer="1" rot="R270"/>
+<smd name="10" x="-5.08" y="-11.43" dx="1" dy="3.5" layer="1" rot="R270"/>
 <polygon width="0.127" layer="21">
 <vertex x="-1.63" y="-12.7"/>
 <vertex x="-1.63" y="12.7"/>
@@ -209,15 +216,6 @@ DIN A4, landscape with extra doc field</description>
 <wire x1="1.17" y1="6.35" x2="6.97" y2="6.35" width="1.016" layer="21"/>
 <wire x1="1.17" y1="8.89" x2="6.97" y2="8.89" width="1.016" layer="21"/>
 <wire x1="1.17" y1="11.43" x2="6.97" y2="11.43" width="1.016" layer="21"/>
-<text x="-6.858" y="14.097" size="1.27" layer="25">&gt;NAME</text>
-<text x="-6.858" y="-14.986" size="1.27" layer="27">&gt;VALUE</text>
-<smd name="4" x="-5.08" y="3.81" dx="1" dy="3.5" layer="1" rot="R270"/>
-<smd name="5" x="-5.08" y="1.27" dx="1" dy="3.5" layer="1" rot="R270"/>
-<smd name="6" x="-5.08" y="-1.27" dx="1" dy="3.5" layer="1" rot="R270"/>
-<smd name="7" x="-5.08" y="-3.81" dx="1" dy="3.5" layer="1" rot="R270"/>
-<smd name="8" x="-5.08" y="-6.35" dx="1" dy="3.5" layer="1" rot="R270"/>
-<smd name="9" x="-5.08" y="-8.89" dx="1" dy="3.5" layer="1" rot="R270"/>
-<smd name="10" x="-5.08" y="-11.43" dx="1" dy="3.5" layer="1" rot="R270"/>
 <wire x1="1.17" y1="3.81" x2="6.97" y2="3.81" width="1.016" layer="21"/>
 <wire x1="1.17" y1="1.27" x2="6.97" y2="1.27" width="1.016" layer="21"/>
 <wire x1="1.17" y1="-1.27" x2="6.97" y2="-1.27" width="1.016" layer="21"/>
@@ -225,8 +223,10 @@ DIN A4, landscape with extra doc field</description>
 <wire x1="1.17" y1="-6.35" x2="6.97" y2="-6.35" width="1.016" layer="21"/>
 <wire x1="1.17" y1="-8.89" x2="6.97" y2="-8.89" width="1.016" layer="21"/>
 <wire x1="1.17" y1="-11.43" x2="6.97" y2="-11.43" width="1.016" layer="21"/>
+<text x="-6.858" y="14.097" size="1.27" layer="25">&gt;NAME</text>
+<text x="-6.858" y="-14.986" size="1.27" layer="27">&gt;VALUE</text>
 </package>
-<package name="PINHD2SMD">
+<package name="PINHD2SMD" urn="urn:adsk.eagle:footprint:4344734/1" library_version="1" library_locally_modified="yes">
 <smd name="2" x="-5.08" y="-1.27" dx="1" dy="3.5" layer="1" rot="R270"/>
 <smd name="1" x="-5.08" y="1.27" dx="1" dy="3.5" layer="1" rot="R270"/>
 <polygon width="0.127" layer="21">
@@ -240,7 +240,7 @@ DIN A4, landscape with extra doc field</description>
 <text x="-6.858" y="3.937" size="1.27" layer="25">&gt;NAME</text>
 <text x="-6.858" y="-4.826" size="1.27" layer="27">&gt;VALUE</text>
 </package>
-<package name="DUO_LED">
+<package name="DUO_LED" urn="urn:adsk.eagle:footprint:4344765/1" library_version="1" library_locally_modified="yes">
 <smd name="CR" x="-1.35" y="0.825" dx="1.7" dy="1.05" layer="1"/>
 <smd name="CG" x="-1.35" y="-0.825" dx="1.7" dy="1.05" layer="1"/>
 <smd name="AG" x="1.35" y="-0.825" dx="1.7" dy="1.05" layer="1"/>
@@ -260,9 +260,70 @@ DIN A4, landscape with extra doc field</description>
 <text x="-2.54" y="-2.54" size="0.8128" layer="25">&gt;NAME</text>
 <text x="-2.54" y="-3.81" size="0.8128" layer="27">&gt;VALUE</text>
 </package>
+<package name="SOIC127P600X175-14" urn="urn:adsk.eagle:footprint:4344719/1">
+<description>14-SOIC, 1.27 mm pitch, 6.00 mm span, 8.65 X 3.90 X 1.75 mm body
+&lt;p&gt;14-pin SOIC package with 1.27 mm pitch, 6.00 mm span with body size 8.65 X 3.90 X 1.75 mm&lt;/p&gt;</description>
+<circle x="-2.7288" y="4.6149" radius="0.25" width="0" layer="21"/>
+<wire x1="-2" y1="4.4249" x2="2" y2="4.4249" width="0.12" layer="21"/>
+<wire x1="-2" y1="-4.4249" x2="2" y2="-4.4249" width="0.12" layer="21"/>
+<wire x1="2" y1="-4.375" x2="-2" y2="-4.375" width="0.12" layer="51"/>
+<wire x1="-2" y1="-4.375" x2="-2" y2="4.375" width="0.12" layer="51"/>
+<wire x1="-2" y1="4.375" x2="2" y2="4.375" width="0.12" layer="51"/>
+<wire x1="2" y1="4.375" x2="2" y2="-4.375" width="0.12" layer="51"/>
+<smd name="1" x="-2.4734" y="3.81" dx="1.9685" dy="0.6019" layer="1"/>
+<smd name="2" x="-2.4734" y="2.54" dx="1.9685" dy="0.6019" layer="1"/>
+<smd name="3" x="-2.4734" y="1.27" dx="1.9685" dy="0.6019" layer="1"/>
+<smd name="4" x="-2.4734" y="0" dx="1.9685" dy="0.6019" layer="1"/>
+<smd name="5" x="-2.4734" y="-1.27" dx="1.9685" dy="0.6019" layer="1"/>
+<smd name="6" x="-2.4734" y="-2.54" dx="1.9685" dy="0.6019" layer="1"/>
+<smd name="7" x="-2.4734" y="-3.81" dx="1.9685" dy="0.6019" layer="1"/>
+<smd name="8" x="2.4734" y="-3.81" dx="1.9685" dy="0.6019" layer="1"/>
+<smd name="9" x="2.4734" y="-2.54" dx="1.9685" dy="0.6019" layer="1"/>
+<smd name="10" x="2.4734" y="-1.27" dx="1.9685" dy="0.6019" layer="1"/>
+<smd name="11" x="2.4734" y="0" dx="1.9685" dy="0.6019" layer="1"/>
+<smd name="12" x="2.4734" y="1.27" dx="1.9685" dy="0.6019" layer="1"/>
+<smd name="13" x="2.4734" y="2.54" dx="1.9685" dy="0.6019" layer="1"/>
+<smd name="14" x="2.4734" y="3.81" dx="1.9685" dy="0.6019" layer="1"/>
+<text x="0" y="5.4999" size="1.27" layer="25" align="bottom-center">&gt;NAME</text>
+<text x="0" y="-5.0599" size="1.27" layer="27" align="top-center">&gt;VALUE</text>
+</package>
 </packages>
+<packages3d>
+<package3d name="SOIC127P600X175-14" urn="urn:adsk.eagle:package:4344597/1" type="model">
+<description>14-SOIC, 1.27 mm pitch, 6.00 mm span, 8.65 X 3.90 X 1.75 mm body
+&lt;p&gt;14-pin SOIC package with 1.27 mm pitch, 6.00 mm span with body size 8.65 X 3.90 X 1.75 mm&lt;/p&gt;</description>
+<packageinstances>
+<packageinstance name="SOIC127P600X175-14"/>
+</packageinstances>
+</package3d>
+<package3d name="SOIC14" urn="urn:adsk.eagle:package:4344793/1" type="box" library_version="1" library_locally_modified="yes">
+<packageinstances>
+<packageinstance name="SOIC14"/>
+</packageinstances>
+</package3d>
+<package3d name="SL12SMD058" urn="urn:adsk.eagle:package:4344791/2" type="model" library_version="1" library_locally_modified="yes">
+<packageinstances>
+<packageinstance name="SL12SMD058"/>
+</packageinstances>
+</package3d>
+<package3d name="PINHD10SMD" urn="urn:adsk.eagle:package:4344790/2" type="model" library_version="1" library_locally_modified="yes">
+<packageinstances>
+<packageinstance name="PINHD10SMD"/>
+</packageinstances>
+</package3d>
+<package3d name="PINHD2SMD" urn="urn:adsk.eagle:package:4344788/2" type="model" library_version="1" library_locally_modified="yes">
+<packageinstances>
+<packageinstance name="PINHD2SMD"/>
+</packageinstances>
+</package3d>
+<package3d name="DUO_LED" urn="urn:adsk.eagle:package:4344780/2" type="model" library_version="1" library_locally_modified="yes">
+<packageinstances>
+<packageinstance name="DUO_LED"/>
+</packageinstances>
+</package3d>
+</packages3d>
 <symbols>
-<symbol name="ATTINY1614">
+<symbol name="ATTINY1614" urn="urn:adsk.eagle:symbol:4344759/1" library_version="1" library_locally_modified="yes">
 <pin name="VCC" x="-12.7" y="7.62" length="middle"/>
 <pin name="PA4" x="-12.7" y="5.08" length="middle"/>
 <pin name="PA5" x="-12.7" y="2.54" length="middle"/>
@@ -283,7 +344,7 @@ DIN A4, landscape with extra doc field</description>
 <wire x1="7.62" y1="10.16" x2="-7.62" y2="10.16" width="0.254" layer="94"/>
 <text x="-7.874" y="10.668" size="1.778" layer="95">&gt;NAME</text>
 </symbol>
-<symbol name="SERVO">
+<symbol name="SERVO" urn="urn:adsk.eagle:symbol:4344757/1" library_version="1" library_locally_modified="yes">
 <wire x1="-6.35" y1="-5.08" x2="1.27" y2="-5.08" width="0.4064" layer="94"/>
 <wire x1="1.27" y1="-5.08" x2="1.27" y2="5.08" width="0.4064" layer="94"/>
 <wire x1="1.27" y1="5.08" x2="-6.35" y2="5.08" width="0.4064" layer="94"/>
@@ -294,7 +355,7 @@ DIN A4, landscape with extra doc field</description>
 <pin name="2" x="-2.54" y="0" visible="pad" length="short" direction="pas" function="dot"/>
 <pin name="3" x="-2.54" y="-2.54" visible="pad" length="short" direction="pas" function="dot"/>
 </symbol>
-<symbol name="PINHD10">
+<symbol name="PINHD10" urn="urn:adsk.eagle:symbol:4344756/1" library_version="1" library_locally_modified="yes">
 <wire x1="-6.35" y1="-15.24" x2="1.27" y2="-15.24" width="0.4064" layer="94"/>
 <wire x1="1.27" y1="-15.24" x2="1.27" y2="12.7" width="0.4064" layer="94"/>
 <wire x1="1.27" y1="12.7" x2="-6.35" y2="12.7" width="0.4064" layer="94"/>
@@ -312,7 +373,7 @@ DIN A4, landscape with extra doc field</description>
 <pin name="9" x="-2.54" y="-10.16" visible="pad" length="short" direction="pas" function="dot"/>
 <pin name="10" x="-2.54" y="-12.7" visible="pad" length="short" direction="pas" function="dot"/>
 </symbol>
-<symbol name="PINHD2">
+<symbol name="PINHD2" urn="urn:adsk.eagle:symbol:4344754/1" library_version="1" library_locally_modified="yes">
 <wire x1="-6.35" y1="-2.54" x2="1.27" y2="-2.54" width="0.4064" layer="94"/>
 <wire x1="1.27" y1="-2.54" x2="1.27" y2="5.08" width="0.4064" layer="94"/>
 <wire x1="1.27" y1="5.08" x2="-6.35" y2="5.08" width="0.4064" layer="94"/>
@@ -322,7 +383,7 @@ DIN A4, landscape with extra doc field</description>
 <pin name="1" x="-2.54" y="2.54" visible="pad" length="short" direction="pas" function="dot"/>
 <pin name="2" x="-2.54" y="0" visible="pad" length="short" direction="pas" function="dot"/>
 </symbol>
-<symbol name="DUO_LED">
+<symbol name="DUO_LED" urn="urn:adsk.eagle:symbol:4344747/1" library_version="1" library_locally_modified="yes">
 <wire x1="0" y1="-1.27" x2="-2.54" y2="0" width="0.254" layer="94"/>
 <wire x1="-2.54" y1="0" x2="0" y2="1.27" width="0.254" layer="94"/>
 <wire x1="-2.54" y1="-1.27" x2="-2.54" y2="0" width="0.254" layer="94"/>
@@ -332,10 +393,21 @@ DIN A4, landscape with extra doc field</description>
 <wire x1="0" y1="0" x2="-2.54" y2="0" width="0.1524" layer="94"/>
 <wire x1="-0.762" y1="2.032" x2="-2.159" y2="3.429" width="0.1524" layer="94"/>
 <wire x1="-1.905" y1="1.905" x2="-3.302" y2="3.302" width="0.1524" layer="94"/>
+<wire x1="0" y1="3.81" x2="-2.54" y2="5.08" width="0.254" layer="94"/>
+<wire x1="-2.54" y1="5.08" x2="0" y2="6.35" width="0.254" layer="94"/>
+<wire x1="-2.54" y1="3.81" x2="-2.54" y2="5.08" width="0.254" layer="94"/>
+<wire x1="-2.54" y1="5.08" x2="-2.54" y2="6.35" width="0.254" layer="94"/>
+<wire x1="0" y1="3.81" x2="0" y2="5.08" width="0.254" layer="94"/>
+<wire x1="0" y1="5.08" x2="0" y2="6.35" width="0.254" layer="94"/>
+<wire x1="0" y1="5.08" x2="-2.54" y2="5.08" width="0.1524" layer="94"/>
+<wire x1="-0.762" y1="7.112" x2="-2.159" y2="8.509" width="0.1524" layer="94"/>
+<wire x1="-1.905" y1="6.985" x2="-3.302" y2="8.382" width="0.1524" layer="94"/>
 <text x="-4.572" y="-3.556" size="1.778" layer="95">&gt;NAME</text>
 <text x="-4.572" y="-5.715" size="1.778" layer="96">&gt;VALUE</text>
 <pin name="CG" x="-5.08" y="0" visible="off" length="short" direction="pas"/>
 <pin name="AG" x="2.54" y="0" visible="off" length="short" direction="pas" rot="R180"/>
+<pin name="CR" x="-5.08" y="5.08" visible="off" length="short" direction="pas"/>
+<pin name="AR" x="2.54" y="5.08" visible="off" length="short" direction="pas" rot="R180"/>
 <polygon width="0.1524" layer="94">
 <vertex x="-2.159" y="3.429"/>
 <vertex x="-1.27" y="3.048"/>
@@ -346,17 +418,6 @@ DIN A4, landscape with extra doc field</description>
 <vertex x="-2.413" y="2.921"/>
 <vertex x="-2.921" y="2.413"/>
 </polygon>
-<wire x1="0" y1="3.81" x2="-2.54" y2="5.08" width="0.254" layer="94"/>
-<wire x1="-2.54" y1="5.08" x2="0" y2="6.35" width="0.254" layer="94"/>
-<wire x1="-2.54" y1="3.81" x2="-2.54" y2="5.08" width="0.254" layer="94"/>
-<wire x1="-2.54" y1="5.08" x2="-2.54" y2="6.35" width="0.254" layer="94"/>
-<wire x1="0" y1="3.81" x2="0" y2="5.08" width="0.254" layer="94"/>
-<wire x1="0" y1="5.08" x2="0" y2="6.35" width="0.254" layer="94"/>
-<wire x1="0" y1="5.08" x2="-2.54" y2="5.08" width="0.1524" layer="94"/>
-<wire x1="-0.762" y1="7.112" x2="-2.159" y2="8.509" width="0.1524" layer="94"/>
-<wire x1="-1.905" y1="6.985" x2="-3.302" y2="8.382" width="0.1524" layer="94"/>
-<pin name="CR" x="-5.08" y="5.08" visible="off" length="short" direction="pas"/>
-<pin name="AR" x="2.54" y="5.08" visible="off" length="short" direction="pas" rot="R180"/>
 <polygon width="0.1524" layer="94">
 <vertex x="-2.159" y="8.509"/>
 <vertex x="-1.27" y="8.128"/>
@@ -370,7 +431,7 @@ DIN A4, landscape with extra doc field</description>
 </symbol>
 </symbols>
 <devicesets>
-<deviceset name="ATTINY1614">
+<deviceset name="ATTINY1614" urn="urn:adsk.eagle:component:4344814/1" library_version="1" library_locally_modified="yes">
 <gates>
 <gate name="G$1" symbol="ATTINY1614" x="0" y="0"/>
 </gates>
@@ -392,13 +453,40 @@ DIN A4, landscape with extra doc field</description>
 <connect gate="G$1" pin="PB3" pad="6"/>
 <connect gate="G$1" pin="VCC" pad="1"/>
 </connects>
+<package3dinstances>
+<package3dinstance package3d_urn="urn:adsk.eagle:package:4344793/1"/>
+</package3dinstances>
+<technologies>
+<technology name=""/>
+</technologies>
+</device>
+<device name="2" package="SOIC127P600X175-14">
+<connects>
+<connect gate="G$1" pin="GND" pad="14"/>
+<connect gate="G$1" pin="PA0" pad="10"/>
+<connect gate="G$1" pin="PA1" pad="11"/>
+<connect gate="G$1" pin="PA2" pad="12"/>
+<connect gate="G$1" pin="PA3" pad="13"/>
+<connect gate="G$1" pin="PA4" pad="2"/>
+<connect gate="G$1" pin="PA5" pad="3"/>
+<connect gate="G$1" pin="PA6" pad="4"/>
+<connect gate="G$1" pin="PA7" pad="5"/>
+<connect gate="G$1" pin="PB0" pad="9"/>
+<connect gate="G$1" pin="PB1" pad="8"/>
+<connect gate="G$1" pin="PB2" pad="7"/>
+<connect gate="G$1" pin="PB3" pad="6"/>
+<connect gate="G$1" pin="VCC" pad="1"/>
+</connects>
+<package3dinstances>
+<package3dinstance package3d_urn="urn:adsk.eagle:package:4344597/1"/>
+</package3dinstances>
 <technologies>
 <technology name=""/>
 </technologies>
 </device>
 </devices>
 </deviceset>
-<deviceset name="SERVO">
+<deviceset name="SERVO" urn="urn:adsk.eagle:component:4344812/1" locally_modified="yes" library_version="1" library_locally_modified="yes">
 <gates>
 <gate name="G$1" symbol="SERVO" x="0" y="0"/>
 </gates>
@@ -409,13 +497,16 @@ DIN A4, landscape with extra doc field</description>
 <connect gate="G$1" pin="2" pad="2"/>
 <connect gate="G$1" pin="3" pad="3"/>
 </connects>
+<package3dinstances>
+<package3dinstance package3d_urn="urn:adsk.eagle:package:4344791/2"/>
+</package3dinstances>
 <technologies>
 <technology name=""/>
 </technologies>
 </device>
 </devices>
 </deviceset>
-<deviceset name="PINHEAD10SMD">
+<deviceset name="PINHEAD10SMD" urn="urn:adsk.eagle:component:4344811/1" locally_modified="yes" library_version="1" library_locally_modified="yes">
 <gates>
 <gate name="G$1" symbol="PINHD10" x="0" y="0"/>
 </gates>
@@ -433,13 +524,16 @@ DIN A4, landscape with extra doc field</description>
 <connect gate="G$1" pin="8" pad="8"/>
 <connect gate="G$1" pin="9" pad="9"/>
 </connects>
+<package3dinstances>
+<package3dinstance package3d_urn="urn:adsk.eagle:package:4344790/2"/>
+</package3dinstances>
 <technologies>
 <technology name=""/>
 </technologies>
 </device>
 </devices>
 </deviceset>
-<deviceset name="PINHEAD2SMD">
+<deviceset name="PINHEAD2SMD" urn="urn:adsk.eagle:component:4344809/1" locally_modified="yes" library_version="1" library_locally_modified="yes">
 <gates>
 <gate name="G$1" symbol="PINHD2" x="0" y="0"/>
 </gates>
@@ -449,13 +543,16 @@ DIN A4, landscape with extra doc field</description>
 <connect gate="G$1" pin="1" pad="1"/>
 <connect gate="G$1" pin="2" pad="2"/>
 </connects>
+<package3dinstances>
+<package3dinstance package3d_urn="urn:adsk.eagle:package:4344788/2"/>
+</package3dinstances>
 <technologies>
 <technology name=""/>
 </technologies>
 </device>
 </devices>
 </deviceset>
-<deviceset name="DUO_LED">
+<deviceset name="DUO_LED" urn="urn:adsk.eagle:component:4344802/1" locally_modified="yes" library_version="1" library_locally_modified="yes">
 <gates>
 <gate name="G$1" symbol="DUO_LED" x="0" y="0"/>
 </gates>
@@ -467,6 +564,9 @@ DIN A4, landscape with extra doc field</description>
 <connect gate="G$1" pin="CG" pad="CG"/>
 <connect gate="G$1" pin="CR" pad="CR"/>
 </connects>
+<package3dinstances>
+<package3dinstance package3d_urn="urn:adsk.eagle:package:4344780/2"/>
+</package3dinstances>
 <technologies>
 <technology name=""/>
 </technologies>
@@ -8235,7 +8335,7 @@ Source: http://www.mouser.com/ds/2/392/products_18-2245.pdf</description>
 <parts>
 <part name="FRAME1" library="frames" library_urn="urn:adsk.eagle:library:229" deviceset="DINA4_L" device=""/>
 <part name="FRAME2" library="frames" library_urn="urn:adsk.eagle:library:229" deviceset="DINA4_L" device=""/>
-<part name="LEG_0" library="HeRo" deviceset="ATTINY1614" device="">
+<part name="LEG_0" library="HeRo" library_urn="urn:adsk.eagle:library:4344731" deviceset="ATTINY1614" device="2" package3d_urn="urn:adsk.eagle:package:4344597/1" value="ATTINY16142">
 <attribute name="SPICEPREFIX" value="X"/>
 </part>
 <part name="P+1" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+5V" device="">
@@ -8276,9 +8376,9 @@ Source: http://www.mouser.com/ds/2/392/products_18-2245.pdf</description>
 <part name="VDD1" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="VDD" device="">
 <attribute name="SPICEPREFIX" value="G"/>
 </part>
-<part name="U$1" library="HeRo" deviceset="SERVO" device=""/>
-<part name="U$2" library="HeRo" deviceset="SERVO" device=""/>
-<part name="U$3" library="HeRo" deviceset="SERVO" device=""/>
+<part name="U$1" library="HeRo" library_urn="urn:adsk.eagle:library:4344731" deviceset="SERVO" device="" package3d_urn="urn:adsk.eagle:package:4344791/2"/>
+<part name="U$2" library="HeRo" library_urn="urn:adsk.eagle:library:4344731" deviceset="SERVO" device="" package3d_urn="urn:adsk.eagle:package:4344791/2"/>
+<part name="U$3" library="HeRo" library_urn="urn:adsk.eagle:library:4344731" deviceset="SERVO" device="" package3d_urn="urn:adsk.eagle:package:4344791/2"/>
 <part name="P+2" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+5V" device="">
 <attribute name="SPICEPREFIX" value="G"/>
 </part>
@@ -8288,11 +8388,11 @@ Source: http://www.mouser.com/ds/2/392/products_18-2245.pdf</description>
 <part name="GND8" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="GND" device="">
 <attribute name="SPICEPREFIX" value="G"/>
 </part>
-<part name="U$4" library="HeRo" deviceset="PINHEAD10SMD" device=""/>
-<part name="U$5" library="HeRo" deviceset="PINHEAD2SMD" device=""/>
-<part name="U$6" library="HeRo" deviceset="SERVO" device=""/>
-<part name="U$7" library="HeRo" deviceset="SERVO" device=""/>
-<part name="U$8" library="HeRo" deviceset="SERVO" device=""/>
+<part name="U$4" library="HeRo" library_urn="urn:adsk.eagle:library:4344731" deviceset="PINHEAD10SMD" device="" package3d_urn="urn:adsk.eagle:package:4344790/2"/>
+<part name="U$5" library="HeRo" library_urn="urn:adsk.eagle:library:4344731" deviceset="PINHEAD2SMD" device="" package3d_urn="urn:adsk.eagle:package:4344788/2"/>
+<part name="U$6" library="HeRo" library_urn="urn:adsk.eagle:library:4344731" deviceset="SERVO" device="" package3d_urn="urn:adsk.eagle:package:4344791/2"/>
+<part name="U$7" library="HeRo" library_urn="urn:adsk.eagle:library:4344731" deviceset="SERVO" device="" package3d_urn="urn:adsk.eagle:package:4344791/2"/>
+<part name="U$8" library="HeRo" library_urn="urn:adsk.eagle:library:4344731" deviceset="SERVO" device="" package3d_urn="urn:adsk.eagle:package:4344791/2"/>
 <part name="VDD3" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="VDD" device="">
 <attribute name="SPICEPREFIX" value="G"/>
 </part>
@@ -8303,7 +8403,7 @@ Source: http://www.mouser.com/ds/2/392/products_18-2245.pdf</description>
 <part name="P+5" library="supply1" library_urn="urn:adsk.eagle:library:371" deviceset="+5V" device="">
 <attribute name="SPICEPREFIX" value="G"/>
 </part>
-<part name="LED" library="HeRo" deviceset="DUO_LED" device=""/>
+<part name="LED" library="HeRo" library_urn="urn:adsk.eagle:library:4344731" deviceset="DUO_LED" device="" package3d_urn="urn:adsk.eagle:package:4344780/2"/>
 </parts>
 <sheets>
 <sheet>
