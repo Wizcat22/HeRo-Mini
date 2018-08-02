@@ -78,7 +78,22 @@ void init_i2c(void){
 	_delay_ms(50);
 
 	PORTMUX.CTRLB = (1<<PORTMUX_TWI0_bp); //Use alternate pins for i2c
-	TWI0_SADDR = ((1<<3)|(PORTA.IN & ((1<<ADDA)|(1<<ADDB)|(1<<ADDC))>>5))<<1; //Set i2c slave address (0x08 - 0x0F)
+	
+	//Set Address
+	uint8_t addr = 8;
+	if ((PORTA.IN & (1<<ADDA)) != 0)
+	{
+		addr+=4;
+	}
+	if ((PORTA.IN & (1<<ADDB)) != 0)
+	{
+		addr+=2;
+	}
+	if ((PORTA.IN & (1<<ADDC)) != 0)
+	{
+		addr+=1;
+	}
+	TWI0_SADDR = addr<<1;
 	TWI0_SCTRLA = (1<<TWI_ENABLE_bp); //Enable twi in slave mode
 
 }
