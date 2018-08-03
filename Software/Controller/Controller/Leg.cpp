@@ -101,3 +101,9 @@ void set_position(int8_t x,int8_t y, int8_t z){
 	*/
 
 }
+
+void Leg::set_degrees(int8_t alpha,int8_t beta, int8_t gamma){
+	_servo_coxa.servo_write_deg(alpha);
+	_servo_femur.servo_write_deg(beta);
+	_servo_tibia.servo_write_deg(gamma);
+}

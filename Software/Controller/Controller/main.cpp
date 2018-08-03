@@ -2,7 +2,7 @@
 * Controller.c
 *
 * Created: 13.06.2018 23:02:20
-* Author : alex-
+* Author : Alexander Miller
 */
 
 #include <avr/io.h>
@@ -18,8 +18,8 @@ int main(void)
 	init_hw();
 	Led led;
 	Leg leg;
-	
-	char data=0;
+	int8_t data_buf[3] = {0,0,0};
+	uint8_t data = 0;
 	while (1)
 	{
 		wdt_reset();
@@ -27,44 +27,20 @@ int main(void)
 		{
 			data = TWI0_SDATA; //Address + W
 			i2c_write_response(TWI_SCMD_RESPONSE_gc);
-			TWI0_SSTATUS |= (TWI_DIF_bm | TWI_APIF_bm);
-			data = i2c_read_byte();
-			TWI0_SSTATUS |= (TWI_DIF_bm | TWI_APIF_bm);
+			for (uint8_t i=0;i<3;i++)
+			{
+				TWI0_SSTATUS |= (TWI_DIF_bm | TWI_APIF_bm);
+				data_buf[i] = i2c_read_byte();
+				TWI0_SSTATUS |= (TWI_DIF_bm | TWI_APIF_bm);
+				if (i<2)
+				{
+					i2c_write_response(TWI_SCMD_RESPONSE_gc);
+				}
+			}
 			i2c_write_response(TWI_SCMD_COMPTRANS_gc);
 		}
-		
-		if (data == GREEN || data == RED || data == ORANGE)
-		{
-			led.write(data);
-		}
-		else{
-			led.write(OFF);
-		}
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		//wdt_reset();
-//
-		//led.write(GREEN);
-		//_delay_ms(1000);
-		//for (int8_t i=-(SERVO_RANGE/2);i<(SERVO_RANGE/2);i++)
-		//{	
-			//led.write(ORANGE);
-			//leg.test(i);
-			//_delay_ms(20);
-		//}
-		//led.write(RED);
-		//_delay_ms(1000);
-
-
+		leg.set_degrees(data_buf[0],data_buf[1],data_buf[2]);
+		//leg.set_position(data_buf[0],data_buf[1],data_buf[2]);
 	}
 }
 

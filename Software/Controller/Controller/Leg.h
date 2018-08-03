@@ -30,6 +30,7 @@ class Leg
 	~Leg();
 	void test(int8_t deg);
 	void set_position(int8_t x,int8_t y, int8_t z);
+	void set_degrees(int8_t alpha,int8_t beta, int8_t gamma);
 	protected:
 	private:
 
