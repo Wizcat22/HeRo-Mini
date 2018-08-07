@@ -30,7 +30,7 @@
 esp_now_peer_info_t slave;
 #define CHANNEL 3
 bool isPaired = false;
-uint8_t data[3] = {0,1,2};
+uint8_t data[8] = {0,0,0,0,0,0,0,0};
 
 // Init ESP Now
 void InitESPNow() {
@@ -177,7 +177,7 @@ void setup() {
 }
 
 void loop() {
-	sscanf(Serial.readStringUntil(';').c_str(), "%d,%d,%d", &data[0], &data[1], &data[2]);
+	
 	// If Slave is found, it would be populate in `slave` variable
 	// We will check if `slave` is defined and then we proceed further
 	if (slave.channel == CHANNEL) {
@@ -185,11 +185,12 @@ void loop() {
 		if (isPaired) {
 			// pair success or already paired
 			// Send data to device
-			sendData(data,3);
+			sscanf(Serial.readStringUntil(';').c_str(), "%d,%d,%d,%d,%d,%d,%d,%d", &data[0], &data[1], &data[2], &data[3], &data[4], &data[5], &data[6], &data[7]);
+			sendData(data,8);
 		}
 		else {
 			// slave pair failed
-			manageSlave();
+			isPaired = manageSlave();
 		}
 	}
 	else {
