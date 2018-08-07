@@ -1,0 +1,56 @@
+﻿<Window x:Class="HeRoMiniControl.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HeRoMiniControl"
+        mc:Ignorable="d"
+        Title="HeRoMiniControl" Height="451.5" Width="531.5">
+    <Grid>
+        <TextBlock HorizontalAlignment="Left" Margin="10,10,0,0" TextWrapping="Wrap" Text="HeRoMiniControl" VerticalAlignment="Top" FontSize="22"/>
+        <ComboBox x:Name="cb_ports" HorizontalAlignment="Left" Margin="10,44,0,0" VerticalAlignment="Top" Width="64"/>
+        <Button x:Name="btn_refresh" Content="Refresh" HorizontalAlignment="Left" Margin="79,44,0,0" VerticalAlignment="Top" Width="45" Click="btn_refresh_Click" Height="22"/>
+        <Button x:Name="btn_connect" Content="Connect" HorizontalAlignment="Left" Margin="129,44,0,0" VerticalAlignment="Top" Width="49" Click="btn_connect_Click" Height="22"/>
+        <TextBlock x:Name="tb_LTHX" HorizontalAlignment="Left" Margin="27,133,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="18" Width="27"><Run Text="-"/><Run Text="100"/></TextBlock>
+        <ProgressBar x:Name="pb_LTHX" HorizontalAlignment="Left" Height="10" Margin="54,136,0,0" VerticalAlignment="Top" Width="100" Minimum="-100"/>
+        <Label Content="Left Stick:" HorizontalAlignment="Left" Margin="10,85,0,0" VerticalAlignment="Top" Width="100"/>
+        <TextBlock x:Name="tb_LTHY" HorizontalAlignment="Left" Margin="27,159,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="18" Width="27"><Run Text="-"/><Run Text="100"/></TextBlock>
+        <ProgressBar x:Name="pb_LTHY" HorizontalAlignment="Left" Height="10" Margin="54,162,0,0" VerticalAlignment="Top" Width="100" Minimum="-100"/>
+        <Label Content="X" HorizontalAlignment="Left" Margin="10,128,0,0" VerticalAlignment="Top"/>
+        <Label Content="Y" HorizontalAlignment="Left" Margin="10,154,0,0" VerticalAlignment="Top"/>
+        <TextBlock x:Name="tb_RTHX" HorizontalAlignment="Left" Margin="188,133,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="18" Width="27"><Run Text="-"/><Run Text="100"/></TextBlock>
+        <ProgressBar x:Name="pb_RTHX" HorizontalAlignment="Left" Height="10" Margin="215,136,0,0" VerticalAlignment="Top" Width="100" Minimum="-100"/>
+        <Label Content="Right Stick:" HorizontalAlignment="Left" Margin="171,85,0,0" VerticalAlignment="Top" Width="100"/>
+        <TextBlock x:Name="tb_RTHY" HorizontalAlignment="Left" Margin="188,159,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="18" Width="27"><Run Text="-"/><Run Text="100"/></TextBlock>
+        <ProgressBar x:Name="pb_RTHY" HorizontalAlignment="Left" Height="10" Margin="215,162,0,0" VerticalAlignment="Top" Width="100" Minimum="-100"/>
+        <Label Content="X" HorizontalAlignment="Left" Margin="171,128,0,0" VerticalAlignment="Top"/>
+        <Label Content="Y" HorizontalAlignment="Left" Margin="171,154,0,0" VerticalAlignment="Top"/>
+        <TextBlock x:Name="tb_LTR" HorizontalAlignment="Left" Margin="27,218,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="18" Width="27"><Run Text="-"/><Run Text="100"/></TextBlock>
+        <ProgressBar x:Name="pb_LTR" HorizontalAlignment="Left" Height="10" Margin="54,221,0,0" VerticalAlignment="Top" Width="100"/>
+        <Label Content="Left Trigger:" HorizontalAlignment="Left" Margin="10,187,0,0" VerticalAlignment="Top" Width="100"/>
+        <TextBlock x:Name="tb_RTR" HorizontalAlignment="Left" Margin="188,218,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="18" Width="27"><Run Text="-"/><Run Text="100"/></TextBlock>
+        <ProgressBar x:Name="pb_RTR" HorizontalAlignment="Left" Height="10" Margin="215,221,0,0" VerticalAlignment="Top" Width="100"/>
+        <Label Content="Right Trigger:" HorizontalAlignment="Left" Margin="171,187,0,0" VerticalAlignment="Top" Width="100"/>
+        <Label Content="D-Pad:" HorizontalAlignment="Left" Margin="10,292,0,0" VerticalAlignment="Top" Width="100"/>
+        <RadioButton x:Name="rb_up" Content="UP" HorizontalAlignment="Left" Margin="68,318,0,0" VerticalAlignment="Top"/>
+        <RadioButton x:Name="rb_left" Content="LEFT" HorizontalAlignment="Left" Margin="40,343,0,0" VerticalAlignment="Top"/>
+        <RadioButton x:Name="rb_right" Content="RIGHT" HorizontalAlignment="Left" Margin="97,343,0,0" VerticalAlignment="Top"/>
+        <RadioButton x:Name="rb_down" Content="DOWN" HorizontalAlignment="Left" Margin="68,368,0,0" VerticalAlignment="Top"/>
+        <Label Content="Button" HorizontalAlignment="Left" Margin="173,292,0,0" VerticalAlignment="Top" Width="100"/>
+        <RadioButton x:Name="rb_y" Content="Y" HorizontalAlignment="Left" Margin="228,318,0,0" VerticalAlignment="Top"/>
+        <RadioButton x:Name="rb_x" Content="X" HorizontalAlignment="Left" Margin="200,343,0,0" VerticalAlignment="Top"/>
+        <RadioButton x:Name="rb_b" Content="B" HorizontalAlignment="Left" Margin="257,343,0,0" VerticalAlignment="Top"/>
+        <RadioButton x:Name="rb_a" Content="A" HorizontalAlignment="Left" Margin="228,368,0,0" VerticalAlignment="Top"/>
+        <Label Content="Menu:" HorizontalAlignment="Left" Margin="10,241,0,0" VerticalAlignment="Top" Width="100"/>
+        <RadioButton x:Name="rb_LTR" Content="LEFT" HorizontalAlignment="Left" Margin="12,111,0,0" VerticalAlignment="Top"/>
+        <RadioButton x:Name="rb_RTR" Content="RIGHT" HorizontalAlignment="Left" Margin="173,111,0,0" VerticalAlignment="Top"/>
+        <RadioButton x:Name="rb_MS" Content="START" HorizontalAlignment="Left" Margin="97,272,0,0" VerticalAlignment="Top"/>
+        <RadioButton x:Name="rb_MB" Content="BACK" HorizontalAlignment="Left" Margin="27,272,0,0" VerticalAlignment="Top"/>
+        <Label Content="Shoulder" HorizontalAlignment="Left" Margin="171,244,0,0" VerticalAlignment="Top" Width="100"/>
+        <RadioButton x:Name="rb_SR" Content="RIGHT" HorizontalAlignment="Left" Margin="258,275,0,0" VerticalAlignment="Top"/>
+        <RadioButton x:Name="rb_SL" Content="LEFT" HorizontalAlignment="Left" Margin="188,275,0,0" VerticalAlignment="Top"/>
+        <TextBlock x:Name="tb_receive" HorizontalAlignment="Left" Margin="320,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="401" Width="194" Background="WhiteSmoke"/>
+        <CheckBox x:Name="cb_debug" Content="Debug" HorizontalAlignment="Left" Margin="215,48,0,0" VerticalAlignment="Top"/>
+
+    </Grid>
+</Window>
