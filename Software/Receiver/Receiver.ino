@@ -30,7 +30,7 @@
 
 #define CHANNEL 1
 
-volatile uint8_t data_buf[3] = { 0,0,0 };
+volatile int8_t data_buf[8] = { 0,0,0,0,0,0,0,0 };
 
 // Init ESP Now with fallback
 void InitESPNow() {
@@ -73,7 +73,7 @@ void setup() {
 // callback when data is recv from Master
 void OnDataRecv(const uint8_t *mac_addr, const uint8_t *data, int data_len) {
 
-	for (uint8_t i = 0; i < 3; i++)
+	for (uint8_t i = 0; i < 8; i++)
 	{
 		if (i<data_len)
 		{
@@ -84,10 +84,10 @@ void OnDataRecv(const uint8_t *mac_addr, const uint8_t *data, int data_len) {
 
 void loop() {
 	Serial.print("Data: ");
-	for (uint8_t i = 0; i < 3; i++)
+	for (uint8_t i = 0; i < 8; i++)
 	{
 		Serial.print(*(data_buf + i));
-		if (i<3 - 1)
+		if (i<8 - 1)
 		{
 			Serial.print(", ");
 		}
