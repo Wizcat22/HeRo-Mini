@@ -3,30 +3,22 @@
 // 
 
 #include "Leg.h"
+#include "wire.h"
 
-void LegClass::init(int16_t giat_offset, int16_t rotation_offset, uint8_t i2c_address, int16_t x_offset, int16_t y_offset)
+void LegClass::init(int16_t giat_offset_, int16_t rotation_offset_, uint8_t i2c_address_, int16_t x_offset_, int16_t y_offset_)
 {
-	rotation = (rotation_offset / 180) * PI;
-	tOffset = giat_offset;
+	rotation = rotation_offset_ * 0.0174533;
+	tOffset = giat_offset_;
 	t = tOffset;
+	xOffset = x_offset_;
+	yOffset = y_offset_;
+	i2c_address = i2c_address_;
 }
 
 void LegClass::calcPositionRotate(int8_t inc_r, uint8_t mode)
 {
-	t = ((t + abs(inc_r)) + period) % period;
-
-	if ((t >= period * 0.75 - frame) && (t <= period * 0.75 + frame) || (t >= period * 0.25 - frame) && (t <= period * 0.25 + frame))
-	{
-		if (inc_r >= 0)
-		{
-			calcXY(stepSizeXY, rotation, mode);
-		}
-		else
-		{
-			calcXY(stepSizeXY, rotation + PI, mode);
-		}
-
-	}
+	t = ((t + inc_r) + period) % period;
+	calcXY(stepSizeXY, rotation, mode);
 }
 
 void LegClass::calcPose(float yaw, float  pitch, float  roll, float  a, float  b, float  c)
@@ -57,20 +49,27 @@ void LegClass::calcPose(float yaw, float  pitch, float  roll, float  a, float  b
 
 void LegClass::sendData(int8_t *data)
 {
+	uint8_t a[] = { *data , *(data + 1),*(data + 2) };
 	//Serial.println("SEND DATA NOT IMPLEMENTED!");
-	Serial.print("DATA: ");
-	Serial.print(*data);
-	Serial.print(" | ");
-	Serial.print(*(data + 1));
-	Serial.print(" | ");
-	Serial.println(*(data + 2));
+	if (i2c_address == 0x11)
+	{
+		Serial.print("DATA: ");
+		Serial.print(*data);
+		Serial.print(" | ");
+		Serial.print(*(data + 1));
+		Serial.print(" | ");
+		Serial.println(*(data + 2));
+	}
+	
+	Wire.beginTransmission(i2c_address);
+	Wire.write(a,3);
+	Wire.endTransmission();
+
+
 }
 
 void LegClass::calcData()
 {
-
-
-
 	int8_t data[3];
 	//tcp position
 	data[0] = xPos;
@@ -162,7 +161,7 @@ void LegClass::calcPositionCenter()
 
 void LegClass::calcPositionWalk(int8_t inc_x, int8_t inc_y, uint8_t mode)
 {
-	t = (uint8_t)(t + sqrt(inc_x * inc_x + inc_y * inc_y)) % period;
+	t = (uint16_t)(t + sqrt(inc_x * inc_x + inc_y * inc_y)) % period;
 
 	//if t is equal to period*0.25 or period*0.75 +- frame
 	if ((t >= period * 0.75 - frame) && (t <= period * 0.75 + frame) || (t >= period * 0.25 - frame) && (t <= period * 0.25 + frame))
@@ -181,41 +180,21 @@ void LegClass::calcPositionTurn(int8_t inc_x, int8_t inc_r, uint8_t mode)
 	inc_r = -inc_r;
 
 	t = ((t + abs(inc_x)) + period) % period;
-
+	if (i2c_address == 0x11)
+	{
+		Serial.println(t);
+	}
 
 	//if t is equal to period*0.25 or period*0.75 +- frame
 	if ((t >= period * 0.75 - frame) && (t <= period * 0.75 + frame) || (t >= period * 0.25 - frame) && (t <= period * 0.25 + frame))
 	{
-
+		float rad;
 		//calc the radius of the circle
-		double rad = inc_r / abs(inc_r) * ((1000 - 500 * abs(inc_r)) - abs(yOffset));
-
-		//calc angle of the movement path
-		double w = atan2(xOffset, rad);
-
-		//check for errors
-		if (!(w == NAN))
+		//float rad = inc_r / abs(inc_r) * ((1000 - 500 * abs(inc_r)) - abs(yOffset));
+		float r = abs(inc_r) * ((1000 - 500 * abs(inc_r)) - abs(yOffset));
+		if (r != 0 && inc_r != 0)
 		{
-			xyRotation = w;
-		}
-		else
-		{
-			xyRotation = 0;
-		}
-
-		//adjust the angle of the movement path (turn it by 180°)
-		if (inc_r < 0)
-		{
-			xyRotation -= PI;
-		}
-		if (inc_x < 0)
-		{
-			xyRotation -= PI;
-		}
-
-		//if angle is valid
-		if (!(rad == NAN))
-		{
+			rad = inc_r / r;
 			//if leg is on left side
 			if (yOffset < 0)
 			{
@@ -246,10 +225,27 @@ void LegClass::calcPositionTurn(int8_t inc_x, int8_t inc_r, uint8_t mode)
 					stepSizeTurn = stepSizeXY * (abs(rad) - abs(yOffset)) / (abs(rad) + abs(yOffset));
 				}
 			}
+
+			//calc angle of the movement path
+			float w = atan2(xOffset, rad);
+			xyRotation = w;
 		}
-		else
-		{
+		else {
 			stepSizeTurn = stepSizeXY;
+			xyRotation = 0;
+		}
+
+
+
+
+		//adjust the angle of the movement path (turn it by 180°)
+		if (inc_r < 0)
+		{
+			xyRotation -= PI;
+		}
+		if (inc_x < 0)
+		{
+			xyRotation -= PI;
 		}
 
 		//check boundaries

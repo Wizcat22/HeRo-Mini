@@ -9,6 +9,8 @@
 	#include "WProgram.h"
 #endif
 
+
+
 class LegClass
 {
  protected:
@@ -16,19 +18,20 @@ class LegClass
 
  public:
 	 int8_t tOffset;
-	 uint8_t t;
+	 uint16_t t;
 	 int8_t xPos;
 	 int8_t yPos;
 	 int8_t zPos;
 	 int8_t xOffset;
 	 int8_t yOffset;
 	 int8_t zOffset;
-	 uint8_t stepSizeX;
-	 uint8_t stepSizeY;
-	 uint8_t stepSizeZ;
-	 uint8_t stepSizeXY;
-	 uint8_t period = 100;
-	 uint8_t frame = 1;
+	 uint8_t stepSizeX = 30;
+	 uint8_t stepSizeY = 30;
+	 uint8_t stepSizeZ = 30;
+	 uint8_t stepSizeXY = 30;
+	 uint16_t period = 10000;
+	 uint8_t frame = 100;
+	 uint8_t i2c_address;
 	 float rotation;
 	 float xyRotation;
 	 float stepSizeTurn;

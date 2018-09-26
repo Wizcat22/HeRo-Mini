@@ -3,6 +3,7 @@
 // 
 
 #include "Hexapod.h"
+#include "wire.h"
 
 void HexapodClass::init()
 {
@@ -16,15 +17,16 @@ void HexapodClass::init()
 	//giat offset, rotation offset, i2c address, x offset, y offset;
 
 	//left
-	legs[0].init(25, 135, 0x11, 150, 175);
-	legs[2].init(75, 180, 0x12, 0, 175);
-	legs[4].init(25, 225, 0x13, -150, 175);
+	legs[0].init(2500, 135, 8, 150, 175);
+	legs[2].init(7500, 180, 9, 0, 175);
+	legs[4].init(2500, 225, 10, -150, 175);
 
 	//right
-	legs[1].init(75, 45, 0x21, 150, -175);
-	legs[3].init(25, 0, 0x22, 0, -175);
-	legs[5].init(75, 315, 0x23, -150, -175);
+	legs[1].init(7500, 45, 12, 150, -175);
+	legs[3].init(2500, 0, 13, 0, -175);
+	legs[5].init(7500, 315, 14, -150, -175);
 
+	Wire.begin(23, 22, 400000);
 }
 
 void HexapodClass::walk(int8_t inc_x, int8_t inc_y, uint8_t mode)
@@ -48,7 +50,7 @@ void HexapodClass::walk(int8_t inc_x, int8_t inc_y, uint8_t mode)
 	{
 		legs[i].calcData();
 	}
-
+	
 	lastDirection = HexapodClass::Directions::XY;
 
 }
@@ -98,7 +100,6 @@ void HexapodClass::rotate(int8_t inc_r, uint8_t mode)
 	{
 		legs[i].calcData();
 	}
-
 	lastDirection = HexapodClass::Directions::ROTATE;
 }
 
@@ -219,7 +220,7 @@ void HexapodClass::pose(float yaw, float pitch, float roll, float a, float b, fl
 	{
 		legs[i].calcData();
 	}
-
+	
 	lastDirection = HexapodClass::Directions::POSE;
 
 }

@@ -20,11 +20,15 @@ int main(void)
 	Leg leg;
 	int8_t data_buf[3] = {0,0,0};
 	uint8_t data = 0;
+	
+	led.write(GREEN);
 	while (1)
 	{
+		led.write(GREEN);
 		wdt_reset();
 		if (TWI0_SSTATUS & (1<<TWI_APIF_bp))
 		{
+			led.write(ORANGE);
 			data = TWI0_SDATA; //Address + W
 			i2c_write_response(TWI_SCMD_RESPONSE_gc);
 			for (uint8_t i=0;i<3;i++)

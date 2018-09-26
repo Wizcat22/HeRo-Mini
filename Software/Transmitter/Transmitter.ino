@@ -31,6 +31,7 @@ esp_now_peer_info_t slave;
 #define CHANNEL 3
 bool isPaired = false;
 uint8_t data[8] = {0,0,0,0,0,0,0,0};
+int pin = 2;
 
 // Init ESP Now
 void InitESPNow() {
@@ -156,9 +157,11 @@ void sendData(uint8_t *data, uint8_t size) {
 // callback when data is sent from Master to Slave
 void OnDataSent(const uint8_t *mac_addr, esp_now_send_status_t status) {
 	Serial.print("Last Packet: "); Serial.println(status == ESP_NOW_SEND_SUCCESS ? "Delivery Success" : "Delivery Fail");
+	if (status == ESP_NOW_SEND_SUCCESS) { digitalWrite(pin,LOW); }else{ digitalWrite(pin, HIGH); }
 }
 
 void setup() {
+	pinMode(pin, OUTPUT);
 	Serial.begin(115200);
 	Serial.setTimeout(10000000);
 	//Set device in STA mode to begin with
@@ -186,6 +189,7 @@ void loop() {
 			// pair success or already paired
 			// Send data to device
 			sscanf(Serial.readStringUntil(';').c_str(), "%d,%d,%d,%d,%d,%d,%d,%d", &data[0], &data[1], &data[2], &data[3], &data[4], &data[5], &data[6], &data[7]);
+			
 			sendData(data,8);
 		}
 		else {

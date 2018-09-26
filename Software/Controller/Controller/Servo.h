@@ -20,7 +20,7 @@
 #define SERVOA PWMA
 #define SERVOB PWMB
 #define SERVOC PWMC
-#define SERVO_RANGE 180 
+#define SERVO_RANGE 90 
 #define SERVO_MAX_TIME 2260
 #define SERVO_MIN_TIME 700
 
