@@ -26,7 +26,7 @@ public:
 	void walk(int8_t x, int8_t y, uint8_t mode);
 	void turn(int8_t x, int8_t a, uint8_t mode);
 	void pose(float degZ, float degY, float degX, float distA, float distB, float distC, uint8_t mode);
-	void dance(int8_t inc);
+	void dance(float inc);
 	void centerLegs();
 	void rotate(int8_t inc_r, uint8_t mode);
 };

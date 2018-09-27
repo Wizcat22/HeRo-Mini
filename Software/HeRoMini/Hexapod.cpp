@@ -17,16 +17,16 @@ void HexapodClass::init()
 	//giat offset, rotation offset, i2c address, x offset, y offset;
 
 	//left
-	legs[0].init(2500, 135, 8, 150, 175);
-	legs[2].init(7500, 180, 9, 0, 175);
-	legs[4].init(2500, 225, 10, -150, 175);
+	legs[0].init(2500, 135+45, 12, 63, 85);
+	legs[2].init(7500, 180, 14, 0, 85);
+	legs[4].init(2500, 225-45, 9, -63, 85);
 
 	//right
-	legs[1].init(7500, 45, 12, 150, -175);
-	legs[3].init(2500, 0, 13, 0, -175);
-	legs[5].init(7500, 315, 14, -150, -175);
+	legs[1].init(7500, 45-45, 8, 63, -85);
+	legs[3].init(2500, 0, 10, 0, -85);
+	legs[5].init(7500, 315+45, 13, -63, -85);
 
-	Wire.begin(23, 22, 400000);
+	Wire.begin(23, 22, 100000);
 }
 
 void HexapodClass::walk(int8_t inc_x, int8_t inc_y, uint8_t mode)
@@ -103,7 +103,7 @@ void HexapodClass::rotate(int8_t inc_r, uint8_t mode)
 	lastDirection = HexapodClass::Directions::ROTATE;
 }
 
-void HexapodClass::dance(int8_t inc)
+void HexapodClass::dance(float inc)
 {
 
 	float yaw = 0.0;
@@ -157,22 +157,22 @@ void HexapodClass::dance(int8_t inc)
 		break;
 	case 6:
 		//DANCE!
-		a = 30 * sin(t);
+		a = 15 * sin(t);
 		break;
 	case 7:
 		//DANCE!
-		b = 30 * sin(t);
+		b = 15 * sin(t);
 		break;
 	case 8:
 		//DANCE!
-		c = 30 * sin(t);
+		c = 15 * sin(t);
 		break;
-	case 9:
-		//DANCE!
-		roll = 0.174533 * sin(t);
-		b = 30 * sin(t);
-		c = 30 * sin(t);
-		break;
+	//case 9:
+	//	//DANCE!
+	//	roll = 0.174533 * sin(t);
+	//	b = 15 * sin(t);
+	//	c = 15 * sin(t);
+	//	break;
 	default:
 		move = 0;
 		break;

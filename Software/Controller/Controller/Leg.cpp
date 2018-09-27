@@ -9,8 +9,34 @@
 #include "Leg.h"
 
 // default constructor
-Leg::Leg():_servo_coxa(SERVOA),_servo_femur(SERVOB),_servo_tibia(SERVOC)
+Leg::Leg(uint8_t addr):_servo_coxa(SERVOA),_servo_femur(SERVOB),_servo_tibia(SERVOC)
 {
+	//if (addr == 12 ||addr == 9 || addr == 14)
+	//{
+	//invert = 1;
+	//}
+	//else
+	//{
+	//invert = 0;
+	//}
+	
+	switch (addr)
+	{
+		case 8: invert = 0; alpha_offset = 45;
+		break;
+		case 9: invert = 1; alpha_offset = 45;
+		break;
+		case 10: invert = 0; alpha_offset = 0;
+		break;
+		case 12: invert = 1; alpha_offset = -45 ;
+		break;
+		case 13: invert = 0; alpha_offset = -45;
+		break;
+		case 14: invert = 1; alpha_offset = 0;
+		break;
+	}
+	
+	
 } //Leg
 
 // default destructor
@@ -35,70 +61,45 @@ void Leg::test(int8_t deg){
 
 }
 
-void set_position(int8_t x,int8_t y, int8_t z){
-
-	/*
-	//OLD HEXAPOD CODE
-	if (side == 1)
+void Leg::set_position(int8_t x,int8_t y, int8_t z){
+	
+	if (invert == 1)
 	{
-	xPos = -xPos;
-	yPos = -yPos;
-	zPos = zPos;
+		x = -x;
+		y = -y;
 	}
 
+	float aa = 0.0f; //Alpha
+	float bb = 0.0f; //Beta
+	float cc = 0.0f; //Gamma
 
-	lastZPos = zPos;
-
-	float a = 0.0f; //Alpha
-	float b = 0.0f; //Beta
-	float c = 0.0f; //Gamma
-
-	int8_t alpha = 0;
-	int8_t beta = 0;
-	int8_t gamma = 0;
+	int8_t A1 = 17;
+	int8_t A2 = 42;
+	int8_t A3 = 75;
 
 	float l1 = 0.0f;
 	float l2 = 0.0f;
 	float l3 = 0.0f;
 
 	//ALPHA
-	a = atan2(-xPos, A1 + A2 - yPos);
+	aa = atan2(-x, A1 + A2 - y);
 
 	//BETA
-	l1 = HEIGHT - zPos;
-	l2 = A2 - yPos;
+	l1 = 75 - z;
+	l2 = A2 - y;
 	l3 = sqrt(l1 * l1 + l2 * l2);
 
-	b = acos(l1 / l3);
+	bb = acos(l1 / l3);
 
-	b = b + acos((A2 * A2 - A3 * A3 + l3 * l3) / (2 * A2 * l3));
+	bb = bb + acos((A2 * A2 - A3 * A3 + l3 * l3) / (2 * A2 * l3));
 
 	//GAMMA
-	c = acos((A3 * A3 - l3 * l3 + A2 * A2) / (2 * A3 * A2));
-
-	//RAD TO DEG
+	cc = acos((A3 * A3 - l3 * l3 + A2 * A2) / (2 * A3 * A2));
 
 
-	alpha = (int8_t)(a * 180 / M_PI);
-	beta = (int8_t)(b * 180 / M_PI - 90);
-	gamma = (int8_t)(c * 180 / M_PI - 90);
-
-	//if TCP is out of reach
-	if ((gamma==0 && beta==0) && (yPos>10 || zPos <-10))
-	{
-	//signal a error
-	led_set_color(C_RED ,1,0.005);
-	//set TCP to last possible position
-	servo_set_deg(lastGamma,lastBeta,alpha);
-	}
-	else{
-	servo_set_deg(gamma,beta,alpha);
-	lastAlpha = alpha;
-	lastBeta = beta;
-	lastGamma = gamma;
-
-	}
-	*/
+	_servo_coxa.servo_write_deg((int8_t)(aa * 180 / M_PI - alpha_offset));
+	_servo_femur.servo_write_deg((int8_t)(bb * 180 / M_PI - 90));
+	_servo_tibia.servo_write_deg((int8_t)(cc * 180 / M_PI - 90));
 
 }
 

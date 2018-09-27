@@ -19,6 +19,16 @@ class Leg
 	public:
 	protected:
 	private:
+	//Left or right Leg
+	uint8_t invert;
+	/* Leg positions
+	* 0(12) \ ___ / 1(8)
+	*        | ^ |
+	* 2(14) -|   |- 3(10)
+	*        |___|
+	* 4(9)  /     \ 5(13)
+	*/
+	int8_t alpha_offset;
 	Sensor _sensor;
 	Servo _servo_coxa;
 	Servo _servo_femur;
@@ -26,7 +36,7 @@ class Leg
 
 	//functions
 	public:
-	Leg();
+	Leg(uint8_t addr);
 	~Leg();
 	void test(int8_t deg);
 	void set_position(int8_t x,int8_t y, int8_t z);

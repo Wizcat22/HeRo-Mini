@@ -17,7 +17,7 @@ class LegClass
 
 
  public:
-	 int8_t tOffset;
+	 int16_t tOffset;
 	 uint16_t t;
 	 int8_t xPos;
 	 int8_t yPos;
@@ -25,10 +25,10 @@ class LegClass
 	 int8_t xOffset;
 	 int8_t yOffset;
 	 int8_t zOffset;
-	 uint8_t stepSizeX = 30;
-	 uint8_t stepSizeY = 30;
-	 uint8_t stepSizeZ = 30;
-	 uint8_t stepSizeXY = 30;
+	 uint8_t stepSizeX = 20;
+	 uint8_t stepSizeY = 20;
+	 uint8_t stepSizeZ = 20;
+	 uint8_t stepSizeXY = 20;
 	 uint16_t period = 10000;
 	 uint8_t frame = 100;
 	 uint8_t i2c_address;

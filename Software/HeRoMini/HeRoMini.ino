@@ -13,7 +13,7 @@
 
 #define CHANNEL 1 //ESP-Now communication channel
 #define DATA_BUF_SIZE 8 //Buffer size for transmitted data
-#define LOOP_TIME 5 //Period in ms for loop()
+#define LOOP_TIME 1 //Period in ms for loop()
 
 //Double Buffer for inputs
 uint8_t data_buf0[DATA_BUF_SIZE]; //Receive buffer 0
@@ -136,8 +136,8 @@ void loop() {
 		}
 		else if (gamepad.start)
 		{
-			Serial.println("Dance selected");
-			/*move = HexapodClass::Directions::DANCE;*/ //TODO: TEST
+			Serial.println("Dance selected | OFF");
+			//move = HexapodClass::Directions::DANCE; //TODO: TEST
 		}
 
 		switch (move)
@@ -161,7 +161,7 @@ void loop() {
 }
 
 void walk(uint8_t mode) {
-	hexapod.walk(gamepad.left_stick_x, gamepad.left_stick_y, mode);
+	hexapod.walk(-gamepad.left_stick_y/(2- gamepad.right_trigger/100.0f), gamepad.left_stick_x/ (2 - gamepad.right_trigger/100.0f), mode);
 }
 
 void turn(uint8_t mode) {
@@ -169,7 +169,7 @@ void turn(uint8_t mode) {
 }
 
 void rotate(uint8_t mode) {
-	hexapod.rotate(gamepad.left_stick_x, mode);
+	hexapod.rotate(gamepad.left_stick_x / (2 - gamepad.right_trigger / 100.0f), mode);
 }
 
 void pose(uint8_t mode) {
@@ -178,16 +178,17 @@ void pose(uint8_t mode) {
 	float degX = 0.00174533 * gamepad.left_stick_x;
 	float degY = 0.00174533 * gamepad.left_stick_y;
 	float degZ = 0.00174533 * (gamepad.right_trigger - gamepad.left_trigger);
-	float distA = 0.3 * gamepad.right_stick_y;
-	float distB = 0.3 * gamepad.right_stick_x;
+	float distA = 0.15 * gamepad.right_stick_y;
+	float distB = 0.15 * gamepad.right_stick_x;
 	float distC = 0;
 
 	//Set rotation around xyz axis and translation in ab-axis
-	hexapod.pose(degZ, degY, degX, distA, distB, distC, mode);
+	//hexapod.pose(degZ, degY, degX, distA, distB, distC, mode);
+	hexapod.pose(0, degY, degX, 0, 0, 0, mode);
 }
 
 void dance() {
-	hexapod.dance(gamepad.left_stick_x);
+	hexapod.dance(gamepad.left_stick_x/10000.0);
 }
 
 

@@ -65,6 +65,11 @@ void init_pwm(void){
 	TCA0_SINGLE_CMP1BUF = 0; //Set compare value of output 1 to 0.
 	TCA0_SINGLE_CMP2BUF = 0; //Set compare value of output 2 to 0.
 	//TCA0_SINGLE_CTRLA |= (1<<TCA_SINGLE_ENABLE_bp); //Enable timer
+	
+	TCB0_CCMP = 20000;
+	TCB0_INTCTRL = 1;
+	TCB0_CTRLA = (1<<TCA_SINGLE_ENABLE_bp);
+	
 
 }
 

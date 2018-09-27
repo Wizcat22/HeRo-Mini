@@ -13,6 +13,26 @@ void LegClass::init(int16_t giat_offset_, int16_t rotation_offset_, uint8_t i2c_
 	xOffset = x_offset_;
 	yOffset = y_offset_;
 	i2c_address = i2c_address_;
+	if (i2c_address == 8)
+	{
+		xPos = xPos - 30;
+		yPos = yPos + 12;
+	}
+	if (i2c_address == 12)
+	{
+		xPos = xPos - 30;
+		yPos = yPos - 12;
+	}
+	if (i2c_address == 9)
+	{
+		xPos = xPos + 30;
+		yPos = yPos - 12;
+	}
+	if (i2c_address == 13)
+	{
+		xPos = xPos + 30;
+		yPos = yPos + 12;
+	}
 }
 
 void LegClass::calcPositionRotate(int8_t inc_r, uint8_t mode)
@@ -49,23 +69,17 @@ void LegClass::calcPose(float yaw, float  pitch, float  roll, float  a, float  b
 
 void LegClass::sendData(int8_t *data)
 {
-	uint8_t a[] = { *data , *(data + 1),*(data + 2) };
-	//Serial.println("SEND DATA NOT IMPLEMENTED!");
-	if (i2c_address == 0x11)
-	{
-		Serial.print("DATA: ");
-		Serial.print(*data);
-		Serial.print(" | ");
-		Serial.print(*(data + 1));
-		Serial.print(" | ");
-		Serial.println(*(data + 2));
-	}
-	
-	Wire.beginTransmission(i2c_address);
-	Wire.write(a,3);
-	Wire.endTransmission();
+	uint8_t a[] = { *data , *(data + 1),*(data + 2)};
+		//Serial.print("DATA: ");
+		//Serial.print(*data);
+		//Serial.print(" | ");
+		//Serial.print(*(data + 1));
+		//Serial.print(" | ");
+		//Serial.println(*(data + 2));
 
-
+		Wire.beginTransmission(i2c_address);
+		Wire.write(a, 3);
+		Wire.endTransmission();
 }
 
 void LegClass::calcData()
@@ -74,7 +88,7 @@ void LegClass::calcData()
 	//tcp position
 	data[0] = xPos;
 	data[1] = yPos;
-	data[2] = zPos;
+	data[2] = -zPos;
 
 	//send data over i2c
 	sendData(data);
@@ -114,7 +128,16 @@ void LegClass::calcZ(uint8_t mode)
 
 void LegClass::calcXY(float stepsize, float rotation, uint8_t mode)
 {
-
+	if (i2c_address == 12 || i2c_address == 13)
+	{
+		rotation = rotation + 45;
+		//a[1] = a[1] - 25;
+	}
+	if (i2c_address == 8 || i2c_address == 9)
+	{
+		rotation = rotation - 45;
+		//a[1] = a[1] - 25;
+	}
 	if (t <= period / 2)
 	{
 		xPos = -4 * ((stepsize * cos(rotation)) / period) * t + (stepsize * cos(rotation));
@@ -147,16 +170,58 @@ void LegClass::calcXY(float stepsize, float rotation, uint8_t mode)
 		yPos = -stepSizeXY;
 	}
 
-
+	if (i2c_address == 8)
+	{
+		xPos = xPos - 30;
+		yPos = yPos + 12;
+	}
+	if (i2c_address == 12)
+	{
+		xPos = xPos - 30;
+		yPos = yPos - 12;
+	}
+	if (i2c_address == 9)
+	{
+		xPos = xPos + 30;
+		yPos = yPos - 12;
+	}
+	if (i2c_address == 13)
+	{
+		xPos = xPos + 30;
+		yPos = yPos + 12;
+	}
 
 }
 
 void LegClass::calcPositionCenter()
 {
 	t = tOffset;
+	
 	xPos = 0.0;
 	yPos = 0.0;
 	zPos = 0.0;
+	if (i2c_address == 8)
+	{
+		xPos = xPos -30;
+		yPos = yPos + 12;
+	}
+	if (i2c_address == 12)
+	{
+		xPos = xPos - 30;
+		yPos = yPos - 12;
+	}
+	if (i2c_address == 9)
+	{
+		xPos = xPos + 30;
+		yPos = yPos - 12;
+	}
+	if (i2c_address == 13)
+	{
+		xPos = xPos + 30;
+		yPos = yPos + 12;
+	}
+
+	
 }
 
 void LegClass::calcPositionWalk(int8_t inc_x, int8_t inc_y, uint8_t mode)
